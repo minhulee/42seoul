@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid.c                                            :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/25 11:07:58 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/25 17:53:47 by minhulee         ###   ########seoul.kr  */
+/*   Created: 2024/08/25 17:56:54 by minhulee          #+#    #+#             */
+/*   Updated: 2024/08/25 18:00:00 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
-
-t_bool	is_valid_file_name(char *file)
+char	*remove_spaces(char *src)
 {
-	while (file && *file != '\0')
+	while (*src)
 	{
-		if (*(file - 1) == '.')
+		if (*src != ' ')
 			break ;
-		file++;
+		src++;
 	}
-	if (ft_strncmp(file, "cub", 4))
-		return (FALSE);
-	return (TRUE);
+	return (src);
 }

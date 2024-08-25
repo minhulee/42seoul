@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:01:20 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/25 11:13:25 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/08/25 18:18:40 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_err(char *err)
 {
+	ft_printf("Error\n");
 	ft_printf("cub3d :: %s\n", err);
 	exit(1);
 }
