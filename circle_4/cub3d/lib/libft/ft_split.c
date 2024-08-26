@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minhulee <minhulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:14:29 by minhulee          #+#    #+#             */
-/*   Updated: 2023/10/14 16:41:50 by minhulee         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:47:35 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-void	*free_all(char **r)
+void	*free_split(char **r)
 {
 	size_t	i;
 
@@ -84,7 +83,7 @@ char	**ft_split(char const *s, char c)
 		{
 			flag = copy_words((s + i), c, r + i2);
 			if (!flag)
-				return (free_all(r));
+				return (free_split(r));
 			i += flag;
 			i2++;
 		}
