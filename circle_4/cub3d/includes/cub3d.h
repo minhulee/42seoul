@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:50:50 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/25 18:10:29 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/08/26 17:15:54 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ typedef enum e_bool
 
 typedef enum e_tile_type
 {
-	EMPTY = -1,
+	EMPTY = 0,
 	GROUND,
-	WALL
+	WALL,
+	START
 }	t_tile_type;
 
 typedef enum wall_type
@@ -44,12 +45,13 @@ typedef enum wall_type
 
 typedef	struct s_map_data
 {
-	t_tile_type	**map;
+	t_tile_type	**map; // 2차원 배열
+	int			start;
 	int			width;
 	int			height;
 	int			floor[3];
 	int			ceil[3];
-	void		*walls[4];
+	void		*walls[4]; // NO SO WE EA
 }	t_map_data;
 
 typedef struct s_cub3d
@@ -64,8 +66,13 @@ void	ft_err(char *err);
 
 /* 1_parsing */
 void	parsing(t_cub3d *info, char *file);
-char	*remove_spaces(char *src);
+/* utils */
+char	*remove_space(char *src);
+/* load */
 void	*load_xpm(t_cub3d *info, char *path, int size);
-t_bool	is_valid_file_name(char *file);
+/* valid */
+void	is_valid_file_name(char *file);
+/* map */
+void	convert_to_map(t_cub3d *info, t_map_data *map_data, char *file);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 17:56:54 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/25 18:00:00 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/08/26 16:06:07 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*remove_spaces(char *src)
+char	*remove_space(char *src)
 {
 	while (*src)
 	{

@@ -15,7 +15,10 @@ LIBFT_ARC		=		./lib/libft/libft.a
 SRCS_MAND		=		./srcs/cub3d.c				\
 						./srcs/0_exit/exit.c		\
 						./srcs/1_parsing/parsing.c	\
-						./srcs/1_parsing/valid.c
+						./srcs/1_parsing/valid.c	\
+						./srcs/1_parsing/util.c		\
+						./srcs/1_parsing/load.c		\
+						./srcs/1_parsing/map.c		\
 
 SRCS_BONUS			=
 
