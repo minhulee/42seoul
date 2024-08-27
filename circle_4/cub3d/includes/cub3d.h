@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:50:50 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/26 17:15:54 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/08/27 15:44:02 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include "../lib/libft/get_next_line.h"
 # include "../lib/ft_printf/ft_printf.h"
 
+# define NONE -1
+
 typedef enum e_bool
 {
 	FAIL = -1,
@@ -29,7 +31,7 @@ typedef enum e_bool
 
 typedef enum e_tile_type
 {
-	EMPTY = 0,
+	EMPTY = -1,
 	GROUND,
 	WALL,
 	START
@@ -63,15 +65,19 @@ typedef struct s_cub3d
 
 /* 0_exit */
 void	ft_err(char *err);
+void	ft_err_map(char *err, int row, int col);
 
 /* 1_parsing */
 void	parsing(t_cub3d *info, char *file);
 /* utils */
+int		quick_open_file(char *file, int line);
 char	*remove_space(char *src);
+void	test_map_array(t_map_data *map_data, t_tile_type **map);
 /* load */
 void	*load_xpm(t_cub3d *info, char *path, int size);
 /* valid */
 void	is_valid_file_name(char *file);
+void	is_valid_map(t_map_data *map_data, t_tile_type **map);
 /* map */
 void	convert_to_map(t_cub3d *info, t_map_data *map_data, char *file);
 

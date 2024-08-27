@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:56:40 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/26 17:15:14 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/08/27 12:33:56 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ void	convert_to_color(int (*dst)[3], char *data)
 void	is_valid_wfc(t_cub3d *info)
 {
 	if (!((info->map_data.walls[NO] && info->map_data.walls[SO]
-		&& info->map_data.walls[WE] && info->map_data.walls[EA]
-		&& info->map_data.floor[2] >= 0 && info->map_data.ceil[2] >= 0)))
+				&& info->map_data.walls[WE] && info->map_data.walls[EA]
+				&& info->map_data.floor[2] >= 0
+				&& info->map_data.ceil[2] >= 0)))
 		ft_err("parsing :: invalid cub file (few options).");
 }
 
@@ -66,7 +67,6 @@ char	*convert_to_w_f_c(t_cub3d *info, t_map_data *map_data, int fd)
 	{
 		line = get_next_line(fd);
 		map_data->start++;
-		ft_printf("line : [%s]\n", line);
 		if (line[0] == '\n')
 			continue ;
 		else if (!map_data->walls[NO] && !ft_strncmp(line, "NO ", 3))
@@ -85,24 +85,14 @@ char	*convert_to_w_f_c(t_cub3d *info, t_map_data *map_data, int fd)
 			return (line);
 		free(line);
 	}
+	close(fd);
 }
-
-//else if (map_data->walls[NO] && map_data->walls[SO]
-		//&& map_data->walls[WE] && map_data->walls[EA]
-		//&& map_data->floor[2] != -1 && map_data->ceil[2] != -1)
-		//return (TRUE);
 
 void	parsing(t_cub3d *info, char *file)
 {
-	int		fd;
-	char	*line;
-
 	(void)info;
 	is_valid_file_name(file);
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		ft_err("parsing :: failed open file. (invalid path)");
-	line = convert_to_w_f_c(info, &info->map_data, fd);
+	convert_to_w_f_c(info, &info->map_data, quick_open_file(file, 0));
 	is_valid_wfc(info);
 	convert_to_map(info, &info->map_data, file);
 }

@@ -1,6 +1,6 @@
 NAME            =       cub3d
 CC              =       cc
-CFLAGS          =       -Wall -Wextra -Werror
+CFLAGS          =       -Wall -Wextra -Werror -fsanitize=address
 INCLUDE         =       -Lmlx -lmlx -framework OpenGL -framework Appkit -Imlx
 
 MLX_DIR         =       ./mlx
