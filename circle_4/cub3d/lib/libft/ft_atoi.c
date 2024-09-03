@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minhulee <minhulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 13:20:35 by minhulee          #+#    #+#             */
-/*   Updated: 2023/10/11 12:19:41 by minhulee         ###   ########.fr       */
+/*   Updated: 2024/09/03 08:54:35 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 int	ft_atoi(const char *str)
 {
 	int				flag;
@@ -34,4 +35,20 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (flag * sum);
+}
+
+int	ft_isatoi(const char *str)
+{
+	int	i;
+
+	if (!str)
+		return (-1);
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (-1);
+		i++;
+	}
+	return (ft_atoi(str));
 }
