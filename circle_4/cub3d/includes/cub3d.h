@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:50:50 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/27 15:44:02 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/03 15:42:34 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include "../lib/libft/get_next_line.h"
 # include "../lib/ft_printf/ft_printf.h"
 
+# define TEXTURE_H 64
+# define TEXTURE_W 64
 # define NONE -1
 
 typedef enum e_bool
@@ -45,6 +47,15 @@ typedef enum wall_type
 	EA
 }	t_wall_type;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
+
 typedef	struct s_map_data
 {
 	t_tile_type	**map; // 2차원 배열
@@ -53,7 +64,7 @@ typedef	struct s_map_data
 	int			height;
 	int			floor[3];
 	int			ceil[3];
-	void		*walls[4]; // NO SO WE EA
+	int			*walls[4]; // NO SO WE EA
 }	t_map_data;
 
 typedef struct s_cub3d
@@ -74,7 +85,7 @@ int		quick_open_file(char *file, int line);
 char	*remove_space(char *src);
 void	test_map_array(t_map_data *map_data, t_tile_type **map);
 /* load */
-void	*load_xpm(t_cub3d *info, char *path, int size);
+void	load_xpm(t_cub3d *info, int **wall, char *path, int size);
 /* valid */
 void	is_valid_file_name(char *file);
 void	is_valid_map(t_map_data *map_data, t_tile_type **map);

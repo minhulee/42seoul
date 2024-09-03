@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:50:05 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/26 17:13:02 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/03 15:39:24 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	init_info(t_cub3d *info)
 		info->map_data.ceil[i] = -1;
 		i++;
 	}
-	ft_memset(&info->map_data.walls, 0, sizeof(void *) * 4);
+	i = -1;
+	ft_memset(info->map_data.walls, 0, sizeof(int *) * 4);
 }
 
 int	main(int argc, char **argv)
@@ -41,7 +42,7 @@ int	main(int argc, char **argv)
 	t_cub3d	info;
 
 	if (argc != 2)
-		ft_err("no argument or more than 2 arguments.\n");
+		ft_err("no argument or more than 2 arguments.");
 	init_info(&info);
 	parsing(&info, argv[1]);
 
