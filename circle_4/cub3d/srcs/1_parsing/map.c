@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:45:54 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/27 16:06:14 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/04 11:14:51 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	is_map_size(t_map_data *map_data, int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	ft_printf("height : %d | width : %d\n", map_data->height, map_data->width);
 	close(fd);
 }
 
@@ -68,7 +67,7 @@ void	make_map_array(t_map_data *map_data)
 	}
 }
 
-void	fill_map_line(t_tile_type **map, char *line, int row)
+void	fill_map_line(t_cub3d *info, t_tile_type **map, char *line, int row)
 {
 	int	cursor;
 	int	i;
@@ -82,7 +81,13 @@ void	fill_map_line(t_tile_type **map, char *line, int row)
 		else if (line[cursor] == '1')
 			map[row][i] = WALL;
 		else if (line[cursor] == 'N')
-			map[row][i] = START;
+			set_start(info, row, i, ST_N);
+		else if (line[cursor] == 'S')
+			set_start(info, row, i, ST_S);
+		else if (line[cursor] == 'W')
+			set_start(info, row, i, ST_W);
+		else if (line[cursor] == 'E')
+			set_start(info, row, i, ST_E);
 		else if (line[cursor] != ' ')
 			ft_err("parsing :: invalid map data");
 		cursor++;
@@ -90,7 +95,7 @@ void	fill_map_line(t_tile_type **map, char *line, int row)
 	}
 }
 
-void	fill_map_array(t_map_data *map_data, int fd)
+void	fill_map_array(t_cub3d *info, t_map_data *map_data, int fd)
 {
 	char	*line;
 	int		cursor;
@@ -101,7 +106,7 @@ void	fill_map_array(t_map_data *map_data, int fd)
 	while (cursor < map_data->height)
 	{
 		line = get_next_line(fd);
-		fill_map_line(map_data->map, line, i);
+		fill_map_line(info, map_data->map, line, i);
 		cursor++;
 		i++;
 		free(line);
@@ -115,7 +120,7 @@ void	convert_to_map(t_cub3d *info, t_map_data *map_data, char *file)
 	ft_printf("map data start line : %d\n", map_data->start);
 	is_map_size(map_data, quick_open_file(file, map_data->start));
 	make_map_array(map_data);
-	fill_map_array(map_data, quick_open_file(file, map_data->start));
+	fill_map_array(info, map_data, quick_open_file(file, map_data->start));
 	test_map_array(map_data, map_data->map);
 	is_valid_map(map_data, map_data->map);
 }

@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 17:46:44 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/04 07:21:44 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/04 11:15:03 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	xpm_to_int_array(int **wall, t_img img, int size)
 {
 	int	i;
 	int	j;
-	
+
 	*wall = malloc(sizeof(int) * (size * size));
 	if (!*wall)
 		ft_err("parsing :: failed create wall array (*malloc).");
@@ -43,9 +43,9 @@ void	load_xpm(t_cub3d *info, int **wall, char *path, int size)
 	img.img = mlx_xpm_file_to_image(info->mlx, path, &size, &size);
 	if (!img.img)
 		ft_err("parsing :: failed load to xpm file. (invalid path)");
+	free(path);
 	img.addr = mlx_get_data_addr(img.img, &img.bpp,
 			&img.line_len, &img.endian);
 	xpm_to_int_array(wall, img, size);
-	free(path);
 	mlx_destroy_image(info->mlx, img.img);
 }
