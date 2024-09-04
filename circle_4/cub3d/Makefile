@@ -1,6 +1,7 @@
 NAME            =       cub3d
 CC              =       cc
-CFLAGS          =       -Wall -Wextra -Werror -fsanitize=address
+CFLAGS			=		-fsanitize=address
+#CFLAGS          =       -Wall -Wextra -Werror -fsanitize=address
 INCLUDE         =       -Lmlx -lmlx -framework OpenGL -framework Appkit -Imlx
 
 MLX_DIR         =       ./mlx
@@ -12,13 +13,20 @@ PRINTF_ARC		=		lib/ft_printf/libftprintf.a
 LIBFT_DIR		=		./lib/libft
 LIBFT_ARC		=		./lib/libft/libft.a
 
-SRCS_MAND		=		./srcs/cub3d.c				\
-						./srcs/0_exit/exit.c		\
-						./srcs/1_parsing/parsing.c	\
-						./srcs/1_parsing/valid.c	\
-						./srcs/1_parsing/util.c		\
-						./srcs/1_parsing/load.c		\
-						./srcs/1_parsing/map.c		\
+SRCS_MAND		=		./srcs/cub3d.c					\
+						./srcs/0_exit/exit.c			\
+						./srcs/1_parsing/parsing.c		\
+						./srcs/1_parsing/valid.c		\
+						./srcs/1_parsing/util.c			\
+						./srcs/1_parsing/load.c			\
+						./srcs/1_parsing/map.c			\
+						./srcs/1_parsing/test.c			\
+						./srcs/2_event/event.c			\
+						./srcs/2_event/key.c			\
+						./srcs/3_render/cal.c			\
+						./srcs/3_render/ray.c			\
+						./srcs/3_render/render.c		\
+						./srcs/3_render/util.c			\
 
 SRCS_BONUS			=
 
