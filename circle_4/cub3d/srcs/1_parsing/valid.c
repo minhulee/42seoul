@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:07:58 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/27 16:06:27 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/04 11:13:13 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	is_valid_map(t_map_data *map_data, t_tile_type **map)
 {
 	int	i;
 	int	j;
-	
+
 	i = 1;
 	while (i < map_data->height)
 	{
