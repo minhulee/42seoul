@@ -28,9 +28,23 @@ SRCS_MAND		=		./srcs/cub3d.c					\
 						./srcs/3_render/render.c		\
 						./srcs/3_render/util.c			\
 
-SRCS_BONUS			=
+bonus_BONUS		=		./bonus/cub3d.c					\
+						./bonus/0_exit/exit.c			\
+						./bonus/1_parsing/parsing.c		\
+						./bonus/1_parsing/valid.c		\
+						./bonus/1_parsing/util.c		\
+						./bonus/1_parsing/load.c		\
+						./bonus/1_parsing/map.c			\
+						./bonus/1_parsing/test.c		\
+						./bonus/2_event/event.c			\
+						./bonus/2_event/key.c			\
+						./bonus/3_render/cal.c			\
+						./bonus/3_render/ray.c			\
+						./bonus/3_render/render.c		\
+						./bonus/3_render/util.c			\
 
 OBJS_MAND		=		$(SRCS_MAND:.c=.o)
+
 OBJS_BONUS		=		$(SRCS_BONUS:.c=.o)
 
 ifdef FLAG

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: minhulee <minhulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:07:58 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/04 11:13:13 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/06 23:59:50 by minhulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void	is_valid_file_name(char *file)
 	while (*file != '\0' && (*(file) != '.'
 			|| *(file + 1) == '.' || *(file + 1) == '/'))
 		file++;
-	if (ft_strncmp(file, ".cub", 5))
+	if (ft_strlen(file) < 4 || ft_strncmp(file, ".cub", 5))
 		ft_err("parsing :: invalid file name.");
 }
