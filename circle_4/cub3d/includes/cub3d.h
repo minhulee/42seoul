@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:50:50 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/09 10:47:55 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/09 11:34:59 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,15 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-typedef	struct s_map_data
+typedef struct s_map_data
 {
-	t_tile_type	**map; // 2차원 배열
+	t_tile_type	**map;
 	int			start;
 	int			width;
 	int			height;
 	int			floor;
 	int			ceil;
-	int			*walls[4]; // NO SO WE EA
+	int			*walls[4];
 }	t_map_data;
 
 typedef struct s_input
@@ -98,7 +98,7 @@ typedef struct s_input
 	t_bool	rotate[2];
 }	t_input;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	double	pos_x;
 	double	pos_y;
@@ -114,7 +114,7 @@ typedef struct s_camera
 	double	plane_y;
 }	t_camera;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	double	dir_x;
 	double	dir_y;
@@ -152,10 +152,10 @@ typedef struct s_cub3d
 	int			buff[WINDOW_H][WINDOW_W];
 	t_map_data	map_data;
 	t_input		input;
-	t_player	player; // -> * -> ft_calloc | memset
+	t_player	player;
 	t_camera	camera;
 	t_ray		ray;
-}	t_cub3d; 
+}	t_cub3d;
 
 /* 0_exit */
 void	ft_err(char *err);
@@ -177,7 +177,8 @@ void	is_valid_map(t_map_data *map_data, t_tile_type **map);
 void	convert_to_map(t_cub3d *info, t_map_data *map_data, char *file);
 
 /* 2_event */
-void	move(t_cub3d *info, t_input *input, t_player *player, t_tile_type **map);
+void	move(t_cub3d *info, t_input *input,
+			t_player *player, t_tile_type **map);
 void	rotate(t_cub3d *info, int key, t_player *player, t_camera *camera);
 /* key */
 t_bool	is_moved_tile(int x, int y, t_tile_type **map);
@@ -189,13 +190,15 @@ int		release(int key, t_cub3d *info);
 /* 3_render */
 int		render(t_cub3d *info);
 /* calulate */
-void	calc_ray_direction(t_ray *ray, t_player *player, t_camera *camera, int x);
+void	calc_ray_direction(t_ray *ray, t_player *player,
+			t_camera *camera, int x);
 void	calc_delta_dist(t_ray *ray);
 void	calc_step_and_side_dist(t_ray *ray, t_player *player);
 void	calc_dist(t_ray *ray, t_player *player);
 void	calc_vertical_line(t_ray *ray, t_var *vars);
 /* raycasting */
-void	raycasting(t_cub3d *info, t_ray *ray, t_player *player, t_camera *camera);
+void	raycasting(t_cub3d *info, t_ray *ray,
+			t_player *player, t_camera *camera);
 /* util */
 t_bool	is_locate_wall(t_player *player, t_map_data *map_data);
 t_bool	is_out_of_map(t_player *player, t_map_data *map_data);
