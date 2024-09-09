@@ -6,11 +6,22 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:50:05 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/04 15:55:11 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/09 10:19:15 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	init_struct_in_info(t_cub3d *info)
+{
+	ft_memset(&info->input.move, 0, sizeof(t_bool) * 4);
+	ft_memset(&info->input.rotate, 0, sizeof(t_bool) * 4);
+	ft_memset(&info->ray, 0, sizeof(t_ray));
+	ft_memset(&info->camera, 0, sizeof(t_camera));
+	ft_memset(&info->player, 0, sizeof(t_player));
+	ft_memset(info->buff, 0, sizeof(info->buff));
+	ft_memset(info->map_data.walls, 0, sizeof(int *) * 4);
+}
 
 void	init_info(t_cub3d *info, t_img *screen)
 {
@@ -31,18 +42,12 @@ void	init_info(t_cub3d *info, t_img *screen)
 	info->map_data.start = 0;
 	info->map_data.width = 0;
 	info->map_data.height = 0;
-	info->map_data.floor[0] = -1;
-	info->map_data.ceil[0] = -1;
+	info->map_data.floor = 0;
+	info->map_data.ceil = 0;
 	info->input.w_s = NONE;
 	info->input.a_d = NONE;
 	info->input.l_r = NONE;
-	ft_memset(&info->input.move, 0, sizeof(t_bool) * 4);
-	ft_memset(&info->input.rotate, 0, sizeof(t_bool) * 4);
-	ft_memset(&info->ray, 0, sizeof(t_ray));
-	ft_memset(&info->camera, 0, sizeof(t_camera));
-	ft_memset(&info->player, 0, sizeof(t_player));
-	ft_memset(info->buff, 0, sizeof(info->buff));
-	ft_memset(info->map_data.walls, 0, sizeof(int *) * 4);
+	init_struct_in_info(info);
 }
 
 int	main(int argc, char **argv)

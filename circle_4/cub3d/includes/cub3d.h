@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:50:50 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/04 16:26:37 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/09 10:47:55 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ typedef	struct s_map_data
 	int			start;
 	int			width;
 	int			height;
-	int			floor[3];
-	int			ceil[3];
+	int			floor;
+	int			ceil;
 	int			*walls[4]; // NO SO WE EA
 }	t_map_data;
 
@@ -177,10 +177,10 @@ void	is_valid_map(t_map_data *map_data, t_tile_type **map);
 void	convert_to_map(t_cub3d *info, t_map_data *map_data, char *file);
 
 /* 2_event */
-void	move_forward_backward(t_cub3d *info, int key, t_player *player, t_tile_type **map);
-void	move_left_right(t_cub3d *info, int key, t_player *player, t_tile_type **map);
-void	rotate_left_right(t_cub3d *info, int key, t_player *player, t_camera *camera);
+void	move(t_cub3d *info, t_input *input, t_player *player, t_tile_type **map);
+void	rotate(t_cub3d *info, int key, t_player *player, t_camera *camera);
 /* key */
+t_bool	is_moved_tile(int x, int y, t_tile_type **map);
 void	update_input(t_cub3d *info, t_input *input);
 void	update_player(t_cub3d *info, t_input *input);
 int		press(int key, t_cub3d *info);

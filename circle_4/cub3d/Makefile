@@ -21,7 +21,8 @@ SRCS_MAND		=		./srcs/cub3d.c					\
 						./srcs/1_parsing/load.c			\
 						./srcs/1_parsing/map.c			\
 						./srcs/1_parsing/test.c			\
-						./srcs/2_event/event.c			\
+						./srcs/2_event/move.c			\
+						./srcs/2_event/camera.c			\
 						./srcs/2_event/key.c			\
 						./srcs/3_render/cal.c			\
 						./srcs/3_render/ray.c			\

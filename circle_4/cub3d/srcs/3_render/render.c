@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 07:53:02 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/04 16:02:58 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/09 10:35:37 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,6 @@ int	render(t_cub3d *info)
 {
 	update_input(info, &info->input);
 	update_player(info, &info->input);
-	int i = 0;
-	while (i < WINDOW_H)
-	{
-		int j = 0;
-		while (j < WINDOW_W)
-		{
-			int color;
-			if (i < WINDOW_H / 2)
-				color = 1 << 24 | (info->map_data.ceil[0] << 16) | (info->map_data.ceil[1] << 8) | (info->map_data.ceil[2]);
-			else
-				color = 1 << 24 | (info->map_data.floor[0] << 16) | (info->map_data.floor[1] << 8) | (info->map_data.floor[2]);
-			info->buff[i][j] = color;
-			j++;
-		}
-		i++;
-	}
 	raycasting(info, &info->ray, &info->player, &info->camera);
 	put_buff_to_screen(info, &info->screen);
 	mlx_put_image_to_window(info->mlx, info->window,

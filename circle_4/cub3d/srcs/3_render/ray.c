@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:03:11 by jewlee            #+#    #+#             */
-/*   Updated: 2024/09/04 11:11:33 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/09 10:36:41 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,30 @@ void	execute_dda(t_ray *ray, t_player *player, t_map_data *map_data)
 	}
 }
 
-// if (info->ray->is_side == 1)
-// color = (vars->color >> 1) & 8355711;
 void	tex_ver_line(t_cub3d *info, t_var *vars, int start, int x)
 {
+	int	i;
 	int	color;
 	int	**walls;
 
 	vars->step = 1.0 * TEXTURE_H / vars->line_h;
 	vars->tex_pos = (start - WINDOW_H / 2 + vars->line_h / 2) * vars->step;
 	walls = info->map_data.walls;
-	while (start < vars->draw_en)
+	i = 0;
+	while (i < WINDOW_H)
 	{
-		vars->tex_y = (int)vars->tex_pos & 63;
-		vars->tex_pos += vars->step;
-		color = walls[vars->tex_num][TEXTURE_H * vars->tex_y + vars->tex_x];
-		info->buff[start][x] = color;
-		start++;
+		if (i < start)
+			color = info->map_data.ceil;
+		else if (i > vars->draw_en)
+			color = info->map_data.floor;
+		else
+		{
+			vars->tex_y = (int)vars->tex_pos & 63;
+			vars->tex_pos += vars->step;
+			color = walls[vars->tex_num][TEXTURE_H * vars->tex_y + vars->tex_x];
+		}
+		info->buff[i][x] = color;
+		i++;
 	}
 }
 

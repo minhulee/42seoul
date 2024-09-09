@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:56:40 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/04 11:14:35 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/09 10:33:54 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_valid_rgb(int color)
 	return (color);
 }
 
-void	convert_to_color(int (*dst)[3], char *data)
+void	convert_to_color(int *color, char *data)
 {
 	char	**split;
 	int		i;
@@ -34,10 +34,12 @@ void	convert_to_color(int (*dst)[3], char *data)
 		i++;
 	if (i != 3)
 		ft_err("parsing :: invalid floor or ceil colors (too many value)");
+	*color = (1 << 24);
 	i = 0;
 	while (split[i])
 	{
-		(*dst)[i] = is_valid_rgb(ft_isatoi(split[i]));
+		is_valid_rgb(ft_isatoi(split[i]));
+		*color |= (ft_isatoi(split[i]) << (16 - i * 8));
 		i++;
 	}
 	free(data);
@@ -46,11 +48,10 @@ void	convert_to_color(int (*dst)[3], char *data)
 
 void	is_valid_wfc(t_cub3d *info)
 {
-	ft_printf("[%p] | [%p] | [%p] | [%p]\n", info->map_data.walls[NO], info->map_data.walls[SO], info->map_data.walls[WE], info->map_data.walls[EA]);
 	if (!((info->map_data.walls[NO] && info->map_data.walls[SO]
 				&& info->map_data.walls[WE] && info->map_data.walls[EA]
-				&& info->map_data.floor[2] >= 0
-				&& info->map_data.ceil[2] >= 0)))
+				&& info->map_data.floor != 0
+				&& info->map_data.ceil != 0)))
 		ft_err("parsing :: invalid cub file (few options or to many).");
 }
 
@@ -72,9 +73,9 @@ char	*convert_to_w_f_c(t_cub3d *info, t_map_data *map_data, int fd)
 			load_xpm(info, &(map_data->walls[WE]), remove_space(line + 2), 64);
 		else if (!map_data->walls[EA] && !ft_strncmp(line, "EA ", 3))
 			load_xpm(info, &(map_data->walls[EA]), remove_space(line + 2), 64);
-		else if (map_data->floor[0] < 0 && !ft_strncmp(line, "F ", 2))
+		else if (!map_data->floor && !ft_strncmp(line, "F ", 2))
 			convert_to_color(&(map_data->floor), remove_space(line + 1));
-		else if (map_data->ceil[0] < 0 && !ft_strncmp(line, "C ", 2))
+		else if (!map_data->ceil && !ft_strncmp(line, "C ", 2))
 			convert_to_color(&(map_data->ceil), remove_space(line + 1));
 		else
 			return (line);
