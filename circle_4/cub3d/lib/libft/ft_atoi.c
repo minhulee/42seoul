@@ -6,11 +6,12 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 13:20:35 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/03 08:54:35 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/09 09:59:07 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_atoi(const char *str)
 {
 	int				flag;
