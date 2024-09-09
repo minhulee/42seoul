@@ -6,11 +6,19 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:03:11 by jewlee            #+#    #+#             */
-/*   Updated: 2024/09/09 10:36:41 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/09 11:30:55 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+t_bool	is_out_of_map(t_player *player, t_map_data *map_data)
+{
+	if (map_data->map[player->map_y][player->map_x] == WALL
+		|| map_data->map[player->map_y][player->map_x] == EMPTY)
+		return (TRUE);
+	return (FALSE);
+}
 
 void	execute_dda(t_ray *ray, t_player *player, t_map_data *map_data)
 {
@@ -29,8 +37,7 @@ void	execute_dda(t_ray *ray, t_player *player, t_map_data *map_data)
 			player->map_y += ray->step_y;
 			ray->is_side = FALSE;
 		}
-		if (is_out_of_map(player, map_data) == TRUE
-			|| is_locate_wall(player, map_data))
+		if (is_out_of_map(player, map_data) == TRUE)
 			ray->is_hit = TRUE;
 	}
 }
@@ -44,6 +51,7 @@ void	tex_ver_line(t_cub3d *info, t_var *vars, int start, int x)
 	vars->step = 1.0 * TEXTURE_H / vars->line_h;
 	vars->tex_pos = (start - WINDOW_H / 2 + vars->line_h / 2) * vars->step;
 	walls = info->map_data.walls;
+	printf("%d | %d\n", start, vars->draw_en);
 	i = 0;
 	while (i < WINDOW_H)
 	{

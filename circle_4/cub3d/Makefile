@@ -27,7 +27,6 @@ SRCS_MAND		=		./srcs/cub3d.c					\
 						./srcs/3_render/cal.c			\
 						./srcs/3_render/ray.c			\
 						./srcs/3_render/render.c		\
-						./srcs/3_render/util.c			\
 
 bonus_BONUS		=		./bonus/cub3d.c					\
 						./bonus/0_exit/exit.c			\

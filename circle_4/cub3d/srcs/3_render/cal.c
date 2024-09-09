@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:35:33 by jewlee            #+#    #+#             */
-/*   Updated: 2024/09/04 11:12:44 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/09 11:31:13 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void	calc_dist(t_ray *ray, t_player *player)
 
 void	calc_vertical_line(t_ray *ray, t_var *vars)
 {
+	printf("%f\n", ray->dist);
 	vars->line_h = (int)(WINDOW_H / ray->dist);
+	if (vars->line_h < 0)
+		vars->line_h = WINDOW_H;
 	vars->draw_st = -vars->line_h / 2 + WINDOW_H / 2;
 	if (vars->draw_st < 0)
 		vars->draw_st = 0;
