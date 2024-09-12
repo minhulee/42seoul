@@ -6,11 +6,11 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:35:33 by jewlee            #+#    #+#             */
-/*   Updated: 2024/09/09 13:45:56 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/12 09:56:17 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3d_bonus.h"
 
 // 여기서 sidedist x 는 side y 이다!
 // delta 도 동일하다.
@@ -61,22 +61,23 @@ void	calc_step_and_side_dist(t_ray *ray, t_player *player)
 void	calc_dist(t_ray *ray, t_player *player)
 {
 	if (ray->is_side == FALSE)
-		ray->dist = (player->map_y - player->pos_y + (1 - ray->step_y) / 2)
-			/ ray->dir_y;
-	else
 		ray->dist = (player->map_x - player->pos_x + (1 - ray->step_x) / 2)
 			/ ray->dir_x;
+	else
+		ray->dist = (player->map_y - player->pos_y + (1 - ray->step_y) / 2)
+			/ ray->dir_y;
 }
 
-void	calc_vertical_line(t_ray *ray, t_var *vars)
+void	calc_vertical_line(t_ray *ray, t_camera *camera, t_var *vars)
 {
-	vars->line_h = (int)(WINDOW_H / ray->dist);
-	if (vars->line_h < 0)
-		vars->line_h = WINDOW_H;
-	vars->draw_st = -vars->line_h / 2 + WINDOW_H / 2;
+	if (ray->dist < 0)
+		vars->line_h = WINDOW_H * RATE;
+	else
+		vars->line_h = (int)(WINDOW_H / ray->dist) * RATE;
+	vars->draw_st = -vars->line_h / 2 + WINDOW_H / 2 + camera->tov;
 	if (vars->draw_st < 0)
 		vars->draw_st = 0;
-	vars->draw_en = vars->line_h / 2 + WINDOW_H / 2;
+	vars->draw_en = vars->line_h / 2 + WINDOW_H / 2 + camera->tov;
 	if (vars->draw_en >= WINDOW_H)
 		vars->draw_en = WINDOW_H - 1;
 }
