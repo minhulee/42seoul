@@ -13,35 +13,37 @@ PRINTF_ARC		=		lib/ft_printf/libftprintf.a
 LIBFT_DIR		=		./lib/libft
 LIBFT_ARC		=		./lib/libft/libft.a
 
-SRCS_MAND		=		./srcs/cub3d.c					\
-						./srcs/0_exit/exit.c			\
-						./srcs/1_parsing/parsing.c		\
-						./srcs/1_parsing/valid.c		\
-						./srcs/1_parsing/util.c			\
-						./srcs/1_parsing/load.c			\
-						./srcs/1_parsing/map.c			\
-						./srcs/1_parsing/test.c			\
-						./srcs/2_event/move.c			\
-						./srcs/2_event/camera.c			\
-						./srcs/2_event/key.c			\
-						./srcs/3_render/cal.c			\
-						./srcs/3_render/ray.c			\
-						./srcs/3_render/render.c		\
+SRCS_MAND		=		./srcs/cub3d.c						\
+						./srcs/0_exit/exit.c				\
+						./srcs/1_parsing/parsing.c			\
+						./srcs/1_parsing/valid.c			\
+						./srcs/1_parsing/util.c				\
+						./srcs/1_parsing/load.c				\
+						./srcs/1_parsing/map.c				\
+						./srcs/1_parsing/test.c				\
+						./srcs/2_event/move.c				\
+						./srcs/2_event/camera.c				\
+						./srcs/2_event/key.c				\
+						./srcs/3_render/cal.c				\
+						./srcs/3_render/ray.c				\
+						./srcs/3_render/render.c			\
 
-bonus_BONUS		=		./bonus/cub3d.c					\
-						./bonus/0_exit/exit.c			\
-						./bonus/1_parsing/parsing.c		\
-						./bonus/1_parsing/valid.c		\
-						./bonus/1_parsing/util.c		\
-						./bonus/1_parsing/load.c		\
-						./bonus/1_parsing/map.c			\
-						./bonus/1_parsing/test.c		\
-						./bonus/2_event/event.c			\
-						./bonus/2_event/key.c			\
-						./bonus/3_render/cal.c			\
-						./bonus/3_render/ray.c			\
-						./bonus/3_render/render.c		\
-						./bonus/3_render/util.c			\
+SRCS_BONUS		=		./bonus/cub3d.c						\
+						./bonus/0_exit/exit.c				\
+						./bonus/1_parsing/parsing.c			\
+						./bonus/1_parsing/valid.c			\
+						./bonus/1_parsing/util.c			\
+						./bonus/1_parsing/load.c			\
+						./bonus/1_parsing/map.c				\
+						./bonus/1_parsing/test.c			\
+						./bonus/2_event/player.c			\
+						./bonus/2_event/camera.c			\
+						./bonus/2_event/mouse.c				\
+						./bonus/2_event/key.c				\
+						./bonus/3_render/cal.c				\
+						./bonus/3_render/minimap.c			\
+						./bonus/3_render/ray.c				\
+						./bonus/3_render/render.c			\
 
 OBJS_MAND		=		$(SRCS_MAND:.c=.o)
 
