@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 14:01:12 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/06 17:04:11 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/19 09:08:56 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,14 @@
 
 PhoneBook::PhoneBook()
 {
+	std::cout << "PhoneBook :: constructor ::\n";
 	this->cursor = 0;
 	this->saved = 0;
+}
+
+PhoneBook::~PhoneBook()
+{
+	std::cout << "PhoneBook :: distructor ::\n";
 }
 
 void	PhoneBook::LOGO(void) const
@@ -49,18 +55,19 @@ void	PhoneBook::RUN(void)
 		std::cout << "> ";
 		std::getline(std::cin, input);
 		std::cout << std::endl;
-		if(input == "ADD" || input == "1")
+		if(input == "ADD")
 			ADD();
-		else if (input == "SEARCH" || input == "2")
+		else if (input == "SEARCH")
 			SEARCH();
-		else if (input == "EXIT" || input == "3")
-			EXIT();
+		else if (input == "EXIT")
+			break ;
 		else
 		{
 			std::cout << "Invalid Command...\n"
 					  << std::endl;
 		}
 	}
+	EXIT();
 }
 
 bool	PhoneBook::isValidInput(std::string &s) const
@@ -105,7 +112,7 @@ void	PhoneBook::ADD(void)
 		if (input == "***")
 		{
 			std::cout << "Cancel..\n\n";
-			break ;
+			return ;
 		}
 		switch (i++)
 		{
@@ -140,14 +147,14 @@ void	PhoneBook::PRINT(int cursor) const
 {
 	std::string	input;
 
-	std::cout << "╭                                                  ╮\n";
-	std::cout << cursor << " | "
-			  << contacts[cursor].getFirstName() << " |"
-			  << contacts[cursor].getLastName()	 << " |"
-			  << contacts[cursor].getNickName()	 << " |"
-			  << contacts[cursor].getNumber()	 << " |"
-			  << std::endl;
-	std::cout << "╰                                                  ╯\n\n";\
+	std::cout << "\n"
+			  << cursor << "| "
+			  << contacts[cursor].getFirstName() << "|"
+			  << contacts[cursor].getLastName()	 << "|"
+			  << contacts[cursor].getNickName()	 << "|"
+			  << contacts[cursor].getNumber()	 << "|"
+			  << "\n"
+			  << "\n";
 	std::cout << "If you want to return, Enter any key\n\n";
 	std::getline(std::cin, input);
 }
@@ -160,13 +167,13 @@ bool	PhoneBook::isValidOrder(std::string &input) const
 				  << std::endl;
 		return false;
 	}
-	if (!('1' <= input[0] && input[0] <= '8'))
+	if (!('0' <= input[0] && input[0] <= '7'))
 	{
 		std::cout << "Just enter only Number"
 				  << std::endl;
 		return false;
 	}
-	if (input[0] - 48 > saved)
+	if (input[0] - 48 >= saved)
 	{
 		std::cout << "Just enter valid Order"
 				  << std::endl;
@@ -187,29 +194,29 @@ void	PhoneBook::SEARCH(void) const
 	}
 	while (true)
 	{
-		std::cout << "╭                                                  ╮\n"
-				  << "                         Index                      \n"
-				  << "                                                    \n"
-				  << "                           ‧                        \n"
-				  << "                                                    \n";
+		std::cout << "╭                                             ╮\n"
+				  << "                       Index                   \n"
+				  << "                                               \n"
+				  << "                         ‧                     \n"
+				  << "                                               \n";
 		for (int i = 0; i < saved; i++)
 		{
-			std::cout << i + 1 << " | ";
-			PRINT(contacts[i].getFirstName(), " |");
-			PRINT(contacts[i].getLastName(), " |");
-			PRINT(contacts[i].getNickName(), " |");
-			PRINT(contacts[i].getNumber(), " |");
+			std::cout << "|1234567890|1234567890|1234567890|1234567890|\n";
+			std::cout << "|         " << i << "|";
+			PRINT(contacts[i].getFirstName(), "|");
+			PRINT(contacts[i].getLastName(), "|");
+			PRINT(contacts[i].getNickName(), "|");
 			std::cout << std::endl;
 		}
-		std::cout << "                                                    \n"
-				  << "                                                    \n"
-				  << "                                                    \n"
-				  << "╰                                                  ╯\n\n";
+		std::cout << "                                                \n"
+				  << "                                                \n"
+				  << "                                                \n"
+				  << "╰                                              ╯\n\n";
 		std::cout << "> ";
 		std::getline(std::cin, input);
 		if (isValidOrder(input))
 		{
-			PRINT(input[0] - 49);
+			PRINT(input[0] - 48);
 			break ;
 		}
 	}
@@ -225,5 +232,4 @@ void	PhoneBook::EXIT(void) const
 			  << " \\____/  \\__, | \\___|( ) \\____/  \\__, | \\___| (_) (_)\n"
 			  << "          __/ |      |/           __/ |              \n"
 			  << "         |___/                   |___/               \n\n\n";
-	exit(0);
 }

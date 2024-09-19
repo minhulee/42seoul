@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 13:07:07 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/07 13:59:07 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/19 09:06:12 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class	PhoneBook
 {
 	public:
 		PhoneBook				();
+		~PhoneBook				();
 		
 		void	RUN				(void);
 

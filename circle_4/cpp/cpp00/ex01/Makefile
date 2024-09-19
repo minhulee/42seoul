@@ -6,13 +6,13 @@
 #    By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 23:57:57 by jewlee            #+#    #+#              #
-#    Updated: 2024/08/04 14:08:34 by minhulee         ###   ########seoul.kr   #
+#    Updated: 2024/09/19 08:46:43 by minhulee         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= 		phonebook
 CC 				= 		c++
-FLAGS 			= 		-Wall -Werror -Wextra -std=c++98
+FLAGS 			= 		-Wall -Werror -Wextra -std=c++98 -fsanitize=address
 
 INCLUDES 		=
 

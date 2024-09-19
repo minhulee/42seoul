@@ -6,13 +6,13 @@
 #    By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 23:57:57 by jewlee            #+#    #+#              #
-#    Updated: 2024/08/04 13:05:51 by minhulee         ###   ########seoul.kr   #
+#    Updated: 2024/09/19 09:09:27 by minhulee         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= 		megaphone
 CC 				= 		c++
-FLAGS 			= 		-Wall -Werror -Wextra -std=c++98
+FLAGS 			= 		-Wall -Werror -Wextra -std=c++98 -fsanitize=address
 
 INCLUDES 		=
 
