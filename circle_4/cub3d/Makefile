@@ -12,36 +12,36 @@ PRINTF_ARC		=		lib/ft_printf/libftprintf.a
 LIBFT_DIR		=		./lib/libft
 LIBFT_ARC		=		./lib/libft/libft.a
 
-SRCS_MAND		=		./srcs/cub3d.c						\
-						./srcs/0_exit/exit.c				\
-						./srcs/1_parsing/parsing.c			\
-						./srcs/1_parsing/valid.c			\
-						./srcs/1_parsing/util.c				\
-						./srcs/1_parsing/load.c				\
-						./srcs/1_parsing/map.c				\
-						./srcs/2_event/move.c				\
-						./srcs/2_event/camera.c				\
-						./srcs/2_event/key.c				\
-						./srcs/3_render/cal.c				\
-						./srcs/3_render/ray.c				\
-						./srcs/3_render/render.c			\
+SRCS_MAND		=		./srcs/mandetory/cub3d.c						\
+						./srcs/mandetory/0_exit/exit.c					\
+						./srcs/mandetory/1_parsing/parsing.c			\
+						./srcs/mandetory/1_parsing/valid.c				\
+						./srcs/mandetory/1_parsing/util.c				\
+						./srcs/mandetory/1_parsing/load.c				\
+						./srcs/mandetory/1_parsing/map.c				\
+						./srcs/mandetory/2_event/move.c					\
+						./srcs/mandetory/2_event/camera.c				\
+						./srcs/mandetory/2_event/key.c					\
+						./srcs/mandetory/3_render/cal.c					\
+						./srcs/mandetory/3_render/ray.c					\
+						./srcs/mandetory/3_render/render.c				\
 						./test.c
 
-SRCS_BONUS		=		./bonus/cub3d.c						\
-						./bonus/0_exit/exit.c				\
-						./bonus/1_parsing/parsing.c			\
-						./bonus/1_parsing/valid.c			\
-						./bonus/1_parsing/util.c			\
-						./bonus/1_parsing/load.c			\
-						./bonus/1_parsing/map.c				\
-						./bonus/2_event/player.c			\
-						./bonus/2_event/camera.c			\
-						./bonus/2_event/mouse.c				\
-						./bonus/2_event/key.c				\
-						./bonus/3_render/cal.c				\
-						./bonus/3_render/minimap.c			\
-						./bonus/3_render/ray.c				\
-						./bonus/3_render/render.c			\
+SRCS_BONUS		=		./srcs/bonus/cub3d_bonus.c						\
+						./srcs/bonus/0_exit/exit_bonus.c				\
+						./srcs/bonus/1_parsing/parsing_bonus.c			\
+						./srcs/bonus/1_parsing/valid_bonus.c			\
+						./srcs/bonus/1_parsing/util_bonus.c				\
+						./srcs/bonus/1_parsing/load_bonus.c				\
+						./srcs/bonus/1_parsing/map_bonus.c				\
+						./srcs/bonus/2_event/player_bonus.c				\
+						./srcs/bonus/2_event/camera_bonus.c				\
+						./srcs/bonus/2_event/mouse_bonus.c				\
+						./srcs/bonus/2_event/key_bonus.c				\
+						./srcs/bonus/3_render/cal_bonus.c				\
+						./srcs/bonus/3_render/minimap_bonus.c			\
+						./srcs/bonus/3_render/ray_bonus.c				\
+						./srcs/bonus/3_render/render_bonus.c			\
 						./test.c
 
 OBJS_MAND		=		$(SRCS_MAND:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:50:50 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/12 17:05:17 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/20 19:38:14 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,20 @@
 # define LEFT					123
 # define RIGHT					124
 # define SHIFT					257
+
+/* minimap color code */
+# define M_PL ((1 << 24) | (204 << 16) | (204 << 8) | 051)
+# define M_GR ((1 << 24) | (204 << 16) | (255 << 8) | 204)
+# define M_WA ((1 << 24) | (204 << 16) | (153 << 8) | 204)
+# define M_EM ((1 << 24) | (051 << 16) | (051 << 8) | 051)
+# define M_DR ((1 << 24) | (115 << 16) | (115 << 8) | 115)
+# define M_L (1 << 24) | (051 << 16) | (051 << 8) | 051
+
+/* pist x and y*/
+# define PIST_H (WINDOW_H / 2 * WINDOW_W)
+# define LPIST_W (WINDOW_W / 6)
+# define RPIST_W (WINDOW_W / 4 + WINDOW_H / 2)
+# define CENTER ((WINDOW_H / 2 * WINDOW_W) + WINDOW_W / 2)
 
 typedef enum e_bool
 {
@@ -115,7 +129,7 @@ typedef struct s_input
 
 typedef struct s_action
 {
-	t_img	*texture;
+	int		*texture[3];
 	int		time;
 	int		frame;
 	t_bool	flag;
@@ -134,7 +148,8 @@ typedef struct s_player
 	int			frame;
 	t_bool		flag;
 	t_action	left_pist;
-	t_img		right_pist;
+	int			*right_pist;
+	int			*button;
 }	t_player;
 
 typedef struct s_camera
@@ -187,7 +202,6 @@ typedef struct s_cub3d
 	void		*mlx;
 	void		*window;
 	t_img		screen;
-	t_img		button;
 	t_map_data	map_data;
 	t_input		input;
 	t_player	player;
@@ -195,18 +209,23 @@ typedef struct s_cub3d
 	t_ray		ray;
 }	t_cub3d;
 
+/* test */
+void	test_map_array_bonus(t_map_data *map_data, t_tile **map);
+void	check(void);
+
 /* 0_exit */
 void	ft_err(char *err);
 void	ft_err_map(char *err, int row, int col);
+int		exit_game(t_cub3d *info);
 
 /* 1_parsing */
 void	parsing(t_cub3d *info, char *file);
 /* utils */
-void	set_start(t_cub3d *info, int h, int w, t_tile_type type);
 int		quick_open_file(char *file, int line);
 char	*remove_space(char *src);
-void	test_map_array(t_map_data *map_data, t_tile **map);
+void	set_start(t_cub3d *info, int h, int w, char c);
 /* load */
+void	load_action(t_cub3d *info, int **dst, char *path, int size);
 void	load_xpm(t_cub3d *info, int **wall, char *path, int size);
 /* valid */
 void	is_valid_file_name(char *file);
@@ -216,8 +235,8 @@ void	convert_to_map(t_cub3d *info, t_map_data *map_data, char *file);
 
 /* 2_event */
 /* key */
-t_bool	is_moved_tile(t_input *input, int x, int y, t_map_data *map_data);
-void	update_input(t_cub3d *info, t_input *input);
+t_bool	is_moved_tile(int x, int y, t_map_data *map_data);
+void	update_input(t_input *input);
 void	update_player(t_cub3d *info, t_input *input);
 int		press(int key, t_cub3d *info);
 int		release(int key, t_cub3d *info);
@@ -227,7 +246,7 @@ int 	click(int key, int x, int y, t_cub3d *info);
 void	move(t_cub3d *info, t_input *input,
 			t_player *player, t_map_data *map_data);
 /* camera */
-void	rotate(t_cub3d *info, int key, t_player *player, t_camera *camera);
+void	rotate(int key, t_player *player, t_camera *camera);
 void	update_camera(t_cub3d *info);
 
 /* 3_render */
