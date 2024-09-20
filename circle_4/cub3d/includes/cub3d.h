@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:50:50 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/09 11:34:59 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/20 16:57:52 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define NONE -1
 # define MOVE_SPD 0.02
 # define ROT_SPD 0.03
-# define WINDOW_W 640
-# define WINDOW_H 480
+# define WINDOW_W 1980
+# define WINDOW_H 1080
 # define TEXTURE_W 64
 # define TEXTURE_H 64
 
@@ -149,7 +149,6 @@ typedef struct s_cub3d
 	void		*mlx;
 	void		*window;
 	t_img		screen;
-	int			buff[WINDOW_H][WINDOW_W];
 	t_map_data	map_data;
 	t_input		input;
 	t_player	player;
@@ -157,9 +156,14 @@ typedef struct s_cub3d
 	t_ray		ray;
 }	t_cub3d;
 
+/* test */
+void	test_map_array(t_map_data *map_data, t_tile_type **map);
+void	check(void);
+
 /* 0_exit */
 void	ft_err(char *err);
 void	ft_err_map(char *err, int row, int col);
+int		exit_game(t_cub3d *info);
 
 /* 1_parsing */
 void	parsing(t_cub3d *info, char *file);
@@ -167,7 +171,6 @@ void	parsing(t_cub3d *info, char *file);
 void	set_start(t_cub3d *info, int h, int w, t_tile_type type);
 int		quick_open_file(char *file, int line);
 char	*remove_space(char *src);
-void	test_map_array(t_map_data *map_data, t_tile_type **map);
 /* load */
 void	load_xpm(t_cub3d *info, int **wall, char *path, int size);
 /* valid */
@@ -177,12 +180,11 @@ void	is_valid_map(t_map_data *map_data, t_tile_type **map);
 void	convert_to_map(t_cub3d *info, t_map_data *map_data, char *file);
 
 /* 2_event */
-void	move(t_cub3d *info, t_input *input,
-			t_player *player, t_tile_type **map);
-void	rotate(t_cub3d *info, int key, t_player *player, t_camera *camera);
+void	move(t_input *input, t_player *player, t_tile_type **map);
+void	rotate(int key, t_player *player, t_camera *camera);
 /* key */
 t_bool	is_moved_tile(int x, int y, t_tile_type **map);
-void	update_input(t_cub3d *info, t_input *input);
+void	update_input(t_input *input);
 void	update_player(t_cub3d *info, t_input *input);
 int		press(int key, t_cub3d *info);
 int		release(int key, t_cub3d *info);

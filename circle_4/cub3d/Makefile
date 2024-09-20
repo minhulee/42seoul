@@ -1,7 +1,6 @@
 NAME            =       cub3d
 CC              =       cc
-CFLAGS			=		-fsanitize=address
-#CFLAGS          =       -Wall -Wextra -Werror -fsanitize=address
+CFLAGS          =       -Wall -Wextra -Werror
 INCLUDE         =       -Lmlx -lmlx -framework OpenGL -framework Appkit -Imlx
 
 MLX_DIR         =       ./mlx
@@ -20,13 +19,13 @@ SRCS_MAND		=		./srcs/cub3d.c						\
 						./srcs/1_parsing/util.c				\
 						./srcs/1_parsing/load.c				\
 						./srcs/1_parsing/map.c				\
-						./srcs/1_parsing/test.c				\
 						./srcs/2_event/move.c				\
 						./srcs/2_event/camera.c				\
 						./srcs/2_event/key.c				\
 						./srcs/3_render/cal.c				\
 						./srcs/3_render/ray.c				\
 						./srcs/3_render/render.c			\
+						./test.c
 
 SRCS_BONUS		=		./bonus/cub3d.c						\
 						./bonus/0_exit/exit.c				\
@@ -35,7 +34,6 @@ SRCS_BONUS		=		./bonus/cub3d.c						\
 						./bonus/1_parsing/util.c			\
 						./bonus/1_parsing/load.c			\
 						./bonus/1_parsing/map.c				\
-						./bonus/1_parsing/test.c			\
 						./bonus/2_event/player.c			\
 						./bonus/2_event/camera.c			\
 						./bonus/2_event/mouse.c				\
@@ -44,6 +42,7 @@ SRCS_BONUS		=		./bonus/cub3d.c						\
 						./bonus/3_render/minimap.c			\
 						./bonus/3_render/ray.c				\
 						./bonus/3_render/render.c			\
+						./test.c
 
 OBJS_MAND		=		$(SRCS_MAND:.c=.o)
 

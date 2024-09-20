@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:45:54 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/04 11:14:51 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/20 16:53:34 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	fill_map_line(t_cub3d *info, t_tile_type **map, char *line, int row)
 		else if (line[cursor] == 'E')
 			set_start(info, row, i, ST_E);
 		else if (line[cursor] != ' ')
-			ft_err("parsing :: invalid map data");
+			ft_err_map("parsing :: invalid map data", row, i);
 		cursor++;
 		i++;
 	}
@@ -117,7 +117,7 @@ void	fill_map_array(t_cub3d *info, t_map_data *map_data, int fd)
 void	convert_to_map(t_cub3d *info, t_map_data *map_data, char *file)
 {
 	(void)info;
-	ft_printf("map data start line : %d\n", map_data->start);
+	printf("map data start line : %d\n", map_data->start);
 	is_map_size(map_data, quick_open_file(file, map_data->start));
 	make_map_array(map_data);
 	fill_map_array(info, map_data, quick_open_file(file, map_data->start));

@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 17:46:44 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/04 11:15:03 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/20 17:10:20 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	xpm_to_int_array(int **wall, t_img img, int size)
 	*wall = malloc(sizeof(int) * (size * size));
 	if (!*wall)
 		ft_err("parsing :: failed create wall array (*malloc).");
-	ft_printf("[%p]\n", *wall);
+	printf("[%p]\n", *wall);
 	i = 0;
 	while (i < size)
 	{
@@ -37,13 +37,15 @@ void	xpm_to_int_array(int **wall, t_img img, int size)
 void	load_xpm(t_cub3d *info, int **wall, char *path, int size)
 {
 	t_img	img;
+	char	*dst;
 
-	path = ft_strcut(path, 0, ft_strlen(path) - 1);
-	ft_printf("load xpm path : [%s] ", path);
-	img.img = mlx_xpm_file_to_image(info->mlx, path, &size, &size);
-	if (!img.img)
-		ft_err("parsing :: failed load to xpm file. (invalid path)");
+	dst = ft_strcut(path, 0, ft_strlen(path) - 1);
 	free(path);
+	printf("load xpm path : [%s] ", dst);
+	img.img = mlx_xpm_file_to_image(info->mlx, dst, &size, &size);
+	free(dst);
+	if (!img.img)
+		ft_err("parsing :: failed load to xpm file. (invaslid path)");
 	img.addr = mlx_get_data_addr(img.img, &img.bpp,
 			&img.line_len, &img.endian);
 	xpm_to_int_array(wall, img, size);

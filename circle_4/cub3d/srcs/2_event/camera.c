@@ -6,14 +6,13 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 10:03:42 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/09 10:16:45 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/20 13:07:49 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	rotate_left(t_cub3d *info, int key,
-	t_player *player, t_camera *camera)
+void	rotate_left(int key, t_player *player, t_camera *camera)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -32,8 +31,7 @@ void	rotate_left(t_cub3d *info, int key,
 		+ camera->plane_y * cos(-ROT_SPD);
 }
 
-void	rotate_right(t_cub3d *info, int key,
-	t_player *player, t_camera *camera)
+void	rotate_right(int key, t_player *player, t_camera *camera)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -55,11 +53,10 @@ void	rotate_right(t_cub3d *info, int key,
 	}
 }
 
-void	rotate(t_cub3d *info, int key,
-	t_player *player, t_camera *camera)
+void	rotate(int key, t_player *player, t_camera *camera)
 {
 	if (key == NONE)
 		return ;
-	rotate_left(info, key, player, camera);
-	rotate_right(info, key, player, camera);
+	rotate_left(key, player, camera);
+	rotate_right(key, player, camera);
 }

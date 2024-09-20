@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 17:56:54 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/04 11:13:40 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/20 17:08:46 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,14 @@ int	quick_open_file(char *file, int line)
 
 char	*remove_space(char *src)
 {
-	while (*src)
+	int		i;
+
+	i = 0;
+	while (src[i])
 	{
-		if (*src != ' ')
+		if (src[i] != ' ')
 			break ;
-		src++;
+		i++;
 	}
-	return (src);
+	return (ft_strcut(src, i, ft_strlen(src)));
 }

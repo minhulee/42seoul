@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:01:20 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/27 15:43:37 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/20 17:35:33 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,25 @@
 
 void	ft_err(char *err)
 {
-	ft_printf("Error\n");
-	ft_printf("cub3d :: %s\n", err);
+	printf("Error\n");
+	printf("cub3d :: %s\n", err);
 	exit(1);
 }
 
 void	ft_err_map(char *err, int row, int col)
 {
-	ft_printf("Error\n");
+	printf("Error\n");
 	if (col == -1)
-		ft_printf("cub3d :: %s (%d line).\n", err, row);
+		printf("cub3d :: %s (%d line).\n", err, row);
 	else
-		ft_printf("cub3d :: %s (%d, %d).\n", err, row, col);
+		printf("cub3d :: %s (%d, %d).\n", err, row, col);
 	exit(1);
+}
+
+int	exit_game(t_cub3d *info)
+{
+	mlx_clear_window(info->mlx, info->window);
+	mlx_destroy_image(info->mlx, info->screen.img);
+	exit(0);
+	return (0);
 }

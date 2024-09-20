@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 07:25:12 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/09 10:15:51 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/20 13:08:25 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	update_player(t_cub3d *info, t_input *input)
 {
-	move(info, input, &info->player, info->map_data.map);
-	rotate(info, input->l_r, &info->player, &info->camera);
+	move(input, &info->player, info->map_data.map);
+	rotate(input->l_r, &info->player, &info->camera);
 }
 
 t_bool	is_moved_tile(int x, int y, t_tile_type **map)
@@ -26,7 +26,7 @@ t_bool	is_moved_tile(int x, int y, t_tile_type **map)
 	return (FALSE);
 }
 
-void	update_input(t_cub3d *info, t_input *input)
+void	update_input(t_input *input)
 {
 	if (input->w_s == NONE)
 	{

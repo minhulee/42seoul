@@ -2,12 +2,15 @@
 
 
 
-NO ./textures/wall/default/NO.xpm
-SO ./textures/wall/default/SO.xpm
-WE ./textures/wall/default/WE.xpm
-EA ./textures/wall/default/EA.xpm
+NO ./textures/wall/new/NO.xpm
 
-F             100,100,00100
+SO ./textures/wall/new/SO.xpm
+
+WE ./textures/wall/new/WE.xpm
+
+EA ./textures/wall/new/EA.xpm
+
+F 100,100,100
 C 20,20,20
 
         1111111111111111111111111

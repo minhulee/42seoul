@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:56:40 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/09 10:33:54 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/20 17:12:54 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ int	is_valid_rgb(int color)
 void	convert_to_color(int *color, char *data)
 {
 	char	**split;
+	char	*dst;
 	int		i;
 
-	data = ft_strcut(data, 0, ft_strlen(data) - 1);
-	ft_printf("color : [%s]\n", data);
-	split = ft_split(data, ',');
+	dst = ft_strcut(data, 0, ft_strlen(data) - 1);
+	free(data);
+	printf("color : [%s]\n", dst);
+	split = ft_split(dst, ',');
+	free(dst);
 	if (!split)
 		ft_err("parsing :: failed split (*malloc).");
 	i = 0;
@@ -42,20 +45,10 @@ void	convert_to_color(int *color, char *data)
 		*color |= (ft_isatoi(split[i]) << (16 - i * 8));
 		i++;
 	}
-	free(data);
 	free_split(split);
 }
 
-void	is_valid_wfc(t_cub3d *info)
-{
-	if (!((info->map_data.walls[NO] && info->map_data.walls[SO]
-				&& info->map_data.walls[WE] && info->map_data.walls[EA]
-				&& info->map_data.floor != 0
-				&& info->map_data.ceil != 0)))
-		ft_err("parsing :: invalid cub file (few options or to many).");
-}
-
-char	*convert_to_w_f_c(t_cub3d *info, t_map_data *map_data, int fd)
+void	convert_to_w_f_c(t_cub3d *info, t_map_data *map_data, int fd)
 {
 	char	*line;
 
@@ -63,9 +56,7 @@ char	*convert_to_w_f_c(t_cub3d *info, t_map_data *map_data, int fd)
 	{
 		line = get_next_line(fd);
 		map_data->start++;
-		if (line[0] == '\n')
-			continue ;
-		else if (!map_data->walls[NO] && !ft_strncmp(line, "NO ", 3))
+		if (!map_data->walls[NO] && !ft_strncmp(line, "NO ", 3))
 			load_xpm(info, &(map_data->walls[NO]), remove_space(line + 2), 64);
 		else if (!map_data->walls[SO] && !ft_strncmp(line, "SO ", 3))
 			load_xpm(info, &(map_data->walls[SO]), remove_space(line + 2), 64);
@@ -77,10 +68,11 @@ char	*convert_to_w_f_c(t_cub3d *info, t_map_data *map_data, int fd)
 			convert_to_color(&(map_data->floor), remove_space(line + 1));
 		else if (!map_data->ceil && !ft_strncmp(line, "C ", 2))
 			convert_to_color(&(map_data->ceil), remove_space(line + 1));
-		else
-			return (line);
+		else if (line[0] != '\n')
+			break ;
 		free(line);
 	}
+	free(line);
 	close(fd);
 }
 
@@ -89,6 +81,10 @@ void	parsing(t_cub3d *info, char *file)
 	(void)info;
 	is_valid_file_name(file);
 	convert_to_w_f_c(info, &info->map_data, quick_open_file(file, 0));
-	is_valid_wfc(info);
+	if (!((info->map_data.walls[NO] && info->map_data.walls[SO]
+				&& info->map_data.walls[WE] && info->map_data.walls[EA]
+				&& info->map_data.floor != 0
+				&& info->map_data.ceil != 0)))
+		ft_err("parsing :: invalid cub file (few options or to many).");
 	convert_to_map(info, &info->map_data, file);
 }

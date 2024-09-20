@@ -6,14 +6,12 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:35:33 by jewlee            #+#    #+#             */
-/*   Updated: 2024/09/09 13:45:56 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/20 16:30:48 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-// 여기서 sidedist x 는 side y 이다!
-// delta 도 동일하다.
 void	calc_ray_direction(t_ray *ray, t_player *player,
 	t_camera *camera, int x)
 {
@@ -61,18 +59,19 @@ void	calc_step_and_side_dist(t_ray *ray, t_player *player)
 void	calc_dist(t_ray *ray, t_player *player)
 {
 	if (ray->is_side == FALSE)
-		ray->dist = (player->map_y - player->pos_y + (1 - ray->step_y) / 2)
-			/ ray->dir_y;
-	else
 		ray->dist = (player->map_x - player->pos_x + (1 - ray->step_x) / 2)
 			/ ray->dir_x;
+	else
+		ray->dist = (player->map_y - player->pos_y + (1 - ray->step_y) / 2)
+			/ ray->dir_y;
 }
 
 void	calc_vertical_line(t_ray *ray, t_var *vars)
 {
-	vars->line_h = (int)(WINDOW_H / ray->dist);
-	if (vars->line_h < 0)
+	if (ray->dist < 0)
 		vars->line_h = WINDOW_H;
+	else
+		vars->line_h = (int)(WINDOW_H / ray->dist);
 	vars->draw_st = -vars->line_h / 2 + WINDOW_H / 2;
 	if (vars->draw_st < 0)
 		vars->draw_st = 0;
