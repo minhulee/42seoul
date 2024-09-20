@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 17:56:54 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/20 19:32:41 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/20 19:44:45 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char	*remove_space(char *src)
 	while (src[i])
 	{
 		if (src[i] != ' ')
-			break;
+			break ;
 		i++;
 	}
 	return (ft_strcut(src, i, ft_strlen(src)));
