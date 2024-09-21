@@ -6,14 +6,14 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:56:44 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/25 09:42:27 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/21 17:03:51 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <iostream>
 # include <fstream>
 
-std::string	&ft_replace(std::ifstream &inFile, const std::string &from, const std::string &to, std::ofstream &outFile)
+void	ft_replace(std::ifstream &inFile, const std::string &from, const std::string &to, std::ofstream &outFile)
 {
 	std::string	buffer;
 	int			i;
@@ -41,17 +41,22 @@ int	main(int argc, char **argv)
 		std::cout << "Invalid argv...\n" << std::endl;
 		exit(1);
 	}
+	if (std::string(argv[2]).empty())
+	{
+		std::cout << "s1 is empty\n" << std::endl;
+		exit(1);
+	}
 	std::ifstream	inFile(argv[1]);
 	if (!inFile)
 	{
 		std::cerr << "Can't read file\n" << std::endl;
-		return (1);
+		exit(1);
 	}
 	std::ofstream	outFile(std::string(argv[1]).append(".replace"));
 	if (!outFile)
 	{
 		std::cerr << "Can't open file\n" << std::endl;
-		return (1);
+		exit(1);
 	}
 	ft_replace(inFile, std::string(argv[2]), std::string(argv[3]), outFile);
 	inFile.close();

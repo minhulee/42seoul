@@ -6,11 +6,11 @@
 #    By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 23:57:57 by jewlee            #+#    #+#              #
-#    Updated: 2024/08/08 09:38:59 by minhulee         ###   ########seoul.kr   #
+#    Updated: 2024/09/21 17:11:11 by minhulee         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 			= 		Brain
+NAME 			= 		Human
 CC 				= 		c++
 FLAGS 			= 		-Wall -Werror -Wextra -std=c++98
 

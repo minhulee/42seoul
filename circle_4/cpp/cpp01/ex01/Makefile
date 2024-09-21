@@ -6,13 +6,13 @@
 #    By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 23:57:57 by jewlee            #+#    #+#              #
-#    Updated: 2024/08/07 14:07:59 by minhulee         ###   ########seoul.kr   #
+#    Updated: 2024/09/21 14:11:45 by minhulee         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= 		ZombieHoard
 CC 				= 		c++
-FLAGS 			= 		-Wall -Werror -Wextra -std=c++98
+FLAGS 			= 		-Wall -Werror -Wextra -std=c++98 -fsanitize=address
 
 INCLUDES 		=
 

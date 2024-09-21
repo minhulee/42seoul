@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 11:21:35 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/07 15:25:39 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/21 14:08:10 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ const std::string	&Zombie::getName(void) const
 
 void	Zombie::announce(void) const
 {
+	std::cout << this << std::endl;
 	std::cout << name << " : BraiiiiiiinnnzzzZ..." << std::endl;
 }

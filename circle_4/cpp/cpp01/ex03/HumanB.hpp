@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 08:28:05 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/08 08:51:36 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/21 14:48:04 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class	HumanB
 		~HumanB();
 
 		void	attack(void) const;
-
 		void	setWeapon(Weapon *weapon);
 
 	private:

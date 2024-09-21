@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 09:46:15 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/25 10:11:05 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/21 17:09:54 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,8 @@ void	Harl::complain(std::string level)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		(this->*func[i])();
 		if (level == filter[i])
-			break ;
+			(this->*func[i])();
 	}
 };
 

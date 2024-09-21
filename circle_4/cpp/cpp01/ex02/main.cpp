@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 18:33:00 by minhulee          #+#    #+#             */
-/*   Updated: 2024/08/07 18:49:26 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/09/21 14:21:15 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(void)
 {
 	std::string	str = std::string("HI THIS IS BRAIN");
-	std::string	str2 = "HI THIS IS BRAIN!";
+	std::string	str2 = "HI THIS IS BRAIN!!!";
 	
 	std::string	*stringPTR = &str;
 	
