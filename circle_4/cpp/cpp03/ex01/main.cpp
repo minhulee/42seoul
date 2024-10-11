@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 11:09:44 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/26 13:06:06 by minhulee         ###   ########seoul.kr  */
+/*   Created: 2024/10/11 16:15:18 by minhulee          #+#    #+#             */
+/*   Updated: 2024/10/11 17:31:12 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,35 @@
 int	main(void)
 {
 	ScavTrap	a("a");
-	ScavTrap	a_(a);
-	ScavTrap	c("c");
+	ClapTrap	*b = new ScavTrap("b");
+	ScavTrap	c(a);
+	std::cout << std::endl;
+	
+	b->attack(a.getName());
+	std::cout << std::endl;
 
-	a.attack(c.getName());
-	c.takeDamage(a.getDamage());
-	for (int i = 0; i < 50; i++)
-		c.beRepaired(0);
-	c.beRepaired(0);
-	c.guardGate();
-	return 0;
+	a.takeDamage(b->getDamage());
+	std::cout << std::endl;
+	
+	for (int i = 0; i < 49; i++)
+	{
+		b->beRepaired(10);
+		std::cout << std::endl;
+	}
+	
+	b->beRepaired(10);
+	std::cout << std::endl;
+
+	*b = a;
+	std::cout << std::endl;
+
+	b->beRepaired(10);
+	std::cout << std::endl;
+
+	dynamic_cast<ScavTrap *>(b)->guardGate(); 
+	std::cout << std::endl;
+	
+	delete(b);
+	
+	return (0);
 }

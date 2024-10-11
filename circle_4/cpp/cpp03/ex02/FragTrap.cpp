@@ -5,52 +5,69 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 10:29:53 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/26 17:01:00 by minhulee         ###   ########seoul.kr  */
+/*   Created: 2024/10/11 17:23:35 by minhulee          #+#    #+#             */
+/*   Updated: 2024/10/11 17:27:31 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "./FragTrap.hpp"
 
 FragTrap::FragTrap(const std::string &name)
 : ClapTrap(name)
 {
-	setHp(100);
-	setMp(100);
-	setDamage(30);
-	std::cout << "FragTrap :: name constructor called !" << std::endl;
+	std::cout << "FragTrap :: Constructor(name) called" << std::endl;
+	hp = 100;
+	mp = 100;
+	damage = 30;
 }
 
 FragTrap::FragTrap(const FragTrap &other)
-: FragTrap(other.getName())
+: ClapTrap(other.name)
 {
-	setHp(other.getHp());
-	setMp(other.getMp());
-	setDamage(other.getDamage());
-	std::cout << "FragTrap :: copy constructor called !" << std::endl;
+	std::cout << "FragTrap :: Copy Constructor(&other) called" << std::endl;
+	hp = other.hp;
+	mp = other.mp;
+	damage = other.damage;
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << "FragTrap :: default destructor called !" << std::endl;
+	std::cout << "FragTrap :: Destructor called" << std::endl;
 }
 
 FragTrap	&FragTrap::operator=(const FragTrap &other)
 {
+	std::cout << "ScavTrap :: Assignment Operator called" << std::endl;
 	if (this != &other)
 	{
-		setName(other.getName());
-		setHp(other.getHp());
-		setMp(other.getMp());
-		setDamage(other.getDamage());
+		name = other.name;
+		hp = other.hp;
+		mp = other.mp;
+		damage = other.damage;
 	}
-	std::cout << "FragTrap :: copy assignment called !" << std::endl;
-	return *this;
+	return (*this);
 }
 
-void	FragTrap::highFivesGuys()
+void	FragTrap::attack(const std::string &target)
 {
-	std::cout << "ScavTrap :: method guardGate() called !" << std::endl;
-	std::cout << "ScavTrap :: " << getName() << " High Five !!! Guys !!" << std::endl;
+	std::cout << "FragTrap :: Method :: attack() called" << std::endl;
+	if (!canAction())
+	{
+		std::cout << "attack() :: " << name << "'s can't more Action" << std::endl;
+		return ;
+	}
+	mp -= 1;
+	std::cout << "attack() :: " << name << " attacks " << target << " , causing " << damage << " points of damage !"  << std::endl;
+	std::cout << "attack() :: " << name << "'s hp is " << hp << ", mp is " << mp << std::endl;
+}
+
+void	FragTrap::highFivesGuys() const
+{
+	std::cout << "FragTrap :: Method :: highFivesGuys() called" << std::endl;
+	if (!canAction())
+	{
+		std::cout << "highFivesGuys() :: " << name << "'s can't more Action" << std::endl;
+		return ;
+	}
+	std :: cout << "highFivesGuys() :: " << name << " : Guys ! give me Five ! " << std::endl;
 }

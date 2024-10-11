@@ -5,27 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 10:25:21 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/26 16:53:23 by minhulee         ###   ########seoul.kr  */
+/*   Created: 2024/10/11 17:19:43 by minhulee          #+#    #+#             */
+/*   Updated: 2024/10/11 17:22:57 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
 # include "./ClapTrap.hpp"
 
-class	FragTrap : public ClapTrap
+class	FragTrap : public	ClapTrap
 {
 	public:
 		FragTrap(const std::string &name);
 		FragTrap(const FragTrap &other);
-		~FragTrap();
+		virtual	~FragTrap();
 
 		FragTrap	&operator=(const FragTrap &other);
 
-		void	highFivesGuys();
+		virtual void	attack(const std::string &target);
+		void			highFivesGuys() const;
 
 	private:
 		FragTrap();
-
 };

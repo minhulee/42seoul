@@ -5,143 +5,104 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 11:05:24 by minhulee          #+#    #+#             */
-/*   Updated: 2024/09/26 17:05:51 by minhulee         ###   ########seoul.kr  */
+/*   Created: 2024/10/11 15:52:21 by minhulee          #+#    #+#             */
+/*   Updated: 2024/10/11 16:37:24 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ClapTrap.hpp"
-#include <iostream>
 
 ClapTrap::ClapTrap(const std::string &name)
 : name(name), hp(10), mp(10), damage(0)
 {
-	std::cout << "ClapTrap :: constructor called ! " << std::endl;
+	std::cout << "ClapTrap :: Constructor(name) called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 : name(other.name), hp(other.hp), mp(other.mp), damage(other.damage)
 {
-	std::cout << "ClapTrap :: copy constructor called !" << std::endl;
+	std::cout << "ClapTrap :: Copy Constructor(&other) called" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap :: destructor called !" << std::endl;
+	std::cout << "ClapTrap :: Destructor called" << std::endl;
 }
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &other)
 {
+	std::cout << "ClapTrap :: Assignment Operator called" << std::endl;
 	if (this != &other)
 	{
 		name = other.name;
 		hp = other.hp;
 		mp = other.mp;
 		damage = other.damage;
-		std::cout << "ClapTrap :: copy assignment called !" << std::endl;
 	}
-	return *this;
+	return (*this);
+}
+
+bool	ClapTrap::canAction() const
+{
+	std::cout << "ClapTrap :: Method :: canAction() called" << std::endl;
+	if (this->hp == 0)
+		std::cout << "canAction() :: " << name << "'s hp is 0" << std::endl;
+	else if (this->mp == 0)
+		std::cout << "canAction() :: " << name << "'s mp is 0" << std::endl;
+	else
+		return (true);
+	return (false);
 }
 
 const std::string	&ClapTrap::getName() const
 {
-	std::cout << "ClapTrap :: method getName() called" << std::endl;
-	return name;
+	return (name);
 }
 
-const unsigned int	&ClapTrap::getHp() const
+const int	&ClapTrap::getDamage() const
 {
-	std::cout << "ClapTrap :: method getHp() called" << std::endl;
-	return hp;
-}
-
-const unsigned int	&ClapTrap::getMp() const
-{
-	std::cout << "ClapTrap :: method getMp() called" << std::endl;
-	return mp;
-}
-
-const unsigned int	&ClapTrap::getDamage() const
-{
-	std::cout << "ClapTrap :: method getDamage() called" << std::endl;
-	return damage;
-}
-
-void	ClapTrap::setName(const std::string &name_)
-{
-	std::cout << "ClapTrap :: method setName() called" << std::endl;
-	name = name_;
-}
-
-void	ClapTrap::setHp(const unsigned int amount)
-{
-	std::cout << "ClapTrap :: method setHp() called" << std::endl;
-	hp = amount;
-}
-
-void	ClapTrap::setMp(const unsigned int amount)
-{
-	std::cout << "ClapTrap :: method setMp() called" << std::endl;
-	mp = amount;
-}
-
-void	ClapTrap::setDamage(const unsigned int amount)
-{
-	std::cout << "ClapTrap :: method setDamage() called" << std::endl;
-	damage = amount;
-}
-
-bool	ClapTrap::isCanAction()
-{
-	std::cout << "ClapTrap :: method isCanAction() called" << std::endl;
-	if (hp == 0)
-	{
-		std::cout << name << " is out of hp" << std::endl;
-		return false;
-	}
-	if (mp == 0)
-	{
-		std::cout << name << " is out of mp" << std::endl;
-		return false;
-	}
-	return true;
+	return (damage);
 }
 
 void	ClapTrap::attack(const std::string &target)
 {
-	std::cout << "ClapTrap :: method attack() called" << std::endl;
-	if (isCanAction())
+	std::cout << "ClapTrap :: Method :: attack() called" << std::endl;
+	if (!canAction())
 	{
-		mp--;
-		std::cout  << name << " attacks " << target << ", causing " << damage << " points of damage !" << std::endl;
+		std::cout << "attack() :: " << name << "'s can't more Action" << std::endl;
+		return ;
 	}
+	mp -= 1;
+	std::cout << "attack() :: " << name << " attacks " << target << " , causing " << damage << " points of damage !"  << std::endl;
+	std::cout << "attack() :: " << name << "'s hp is " << hp << ", mp is " << mp << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "ClapTrap :: method takeDamage() called" << std::endl;
-	if (!isCanAction())
-		return ;
+	std::cout << "ClapTrap :: Method :: takeDamage() called" << std::endl;
+	if (hp == 0)
+		std::cout << "takeDamage() :: " << name << "is already dead" << std::endl;
 	else if (hp <= amount)
 	{
 		hp = 0;
-		std::cout << name << " is dead..." << std::endl;
+		std::cout << "takeDamage() :: " << name << "is dead" << std::endl;
 	}
 	else
 	{
 		hp -= amount;
-		std::cout << name << "'s hp is " << hp << std::endl;
+		std::cout << "takeDamage() :: " << name << "'s remaining hp is " << hp << std::endl;
 	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	std::cout << "ClapTrap :: method beRepaired() called" << std::endl;
-	if (isCanAction())
+	std::cout << "ClapTrap :: Method :: beRepaired() called" << std::endl;
+	if (!canAction())
 	{
-		mp--;
-		hp += amount;
-		std::cout << name << " repaired itself !" << std::endl;
-		std::cout << name << "'s hp is " << hp << std::endl;
+		std::cout << "beRepaired() :: " << name << "'s can't more Action" << std::endl;
+		return ;
 	}
+	mp -= 1;
+	hp += amount;
+	std::cout << "beRepaired() :: " << name << "'s hp is " << hp << ", mp is " << mp << std::endl;
 }
