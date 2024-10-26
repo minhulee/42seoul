@@ -1,50 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:14:26 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/26 16:57:10 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/10/26 17:20:01 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Ice.hpp"
+#include "./Cure.hpp"
 
-Ice::Ice()
-: AMateria("ice")
+Cure::Cure()
+: AMateria("Cure")
 {
-	std::cout << "Ice :: Default Constructor() called" << std::endl;
+	std::cout << "Cure :: Default Constructor() called" << std::endl;
 }
 
-Ice::Ice(const Ice &other)
+Cure::Cure(const Cure &other)
 : AMateria(other.type)
 {
-	std::cout << "Ice :: Copy Constructor() called" << std::endl;
+	std::cout << "Cure :: Copy Constructor() called" << std::endl;
 }
 
-Ice::~Ice()
+Cure::~Cure()
 {
-	std::cout << "Ice :: Destructor() called" << std:: endl;
+	std::cout << "Cure :: Destructor() called" << std:: endl;
 }
 
-const Ice	&Ice::operator=(const Ice &other)
+const Cure	&Cure::operator=(const Cure &other)
 {
-	std::cout << "Ice :: Assignment Operator called" << std::endl;
+	std::cout << "Cure :: Assignment Operator called" << std::endl;
 	if (this != &other)
 	{
 		this->type = other.type;
 	}
 }
 
-AMateria	*Ice::clone() const
+AMateria	*Cure::clone() const
 {
-	return (new Ice(*this));
+	return (new Cure(*this));
 }
 
 void	use(ICharacter &target)
 {
-	std::cout << "Ice :: Method :: use() called" << std::endl;
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	std::cout << "Cure :: Method :: use() called" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
