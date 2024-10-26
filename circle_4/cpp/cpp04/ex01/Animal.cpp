@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:36:33 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/16 17:03:13 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/10/26 11:35:59 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Animal::Animal()
 }
 
 Animal::Animal(const std::string &type)
-: type(type)
+: type("<None>")
 {
 	std::cout << "Animal :: Constructor(type) called" << std::endl;
 }

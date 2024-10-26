@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 14:33:10 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/26 11:31:53 by minhulee         ###   ########seoul.kr  */
+/*   Created: 2024/10/25 12:14:26 by minhulee          #+#    #+#             */
+/*   Updated: 2024/10/25 12:20:57 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "./Ice.hpp"
 
-# include <string>
-# include <iostream>
-
-class	Animal
+Ice::Ice()
+: AMateria("ice")
 {
-	public:
-		Animal();
-		Animal(const std::string &type);
-		Animal(const Animal &other);
-		virtual	~Animal();
-
-		const Animal	&operator=(const Animal &other);
-
-		const std::string	&getType() const;
-		
-		virtual void		makeSound() const;
-
-	protected:
-		std::string	type;
-};
+	
+}
