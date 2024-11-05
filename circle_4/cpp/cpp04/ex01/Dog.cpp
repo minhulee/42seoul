@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:53:02 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/05 16:43:05 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/06 08:52:24 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ Dog	&Dog::operator=(const Dog &other)
 		type = other.type;
 		delete brain;
 		brain = new Brain();
-		// *brain = *other.brain;
 	}
 	return (*this);
 }

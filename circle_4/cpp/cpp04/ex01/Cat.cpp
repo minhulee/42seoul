@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:50:45 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/05 16:44:27 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/06 08:52:20 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ Cat	&Cat::operator=(const Cat &other)
 		type = other.type;
 		delete brain;
 		brain = new Brain(*other.brain);
-		// *brain = *other.brain;
 	}
 	return (*this);
 }
