@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:21:03 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/05 17:13:46 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/06 08:31:49 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,12 @@ void	Character::use(int idx, ICharacter &target)
 	if ((idx < 0 || 3 < idx) || !slot[idx])
 		return ;
 	slot[idx]->use(target);
+}
+
+AMateria	*Character::exportMateria(int idx)
+{
+	std::cout << "Character :: Method :: exportMateria" << std::endl;
+	if ((idx < 0 || 3 < idx) || !slot[idx])
+		return (NULL);
+	return (slot[idx]);
 }

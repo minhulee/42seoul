@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:14:26 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/05 17:10:08 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/06 08:20:51 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,6 @@ Ice::Ice(const Ice &other)
 Ice::~Ice()
 {
 	std::cout << "Ice :: Destructor() called" << std:: endl;
-}
-
-Ice	&Ice::operator=(const Ice &other)
-{
-	std::cout << "Ice :: Assignment Operator called" << std::endl;
-	if (this != &other)
-	{
-		this->type = other.type;
-	}
-	return (*this);
 }
 
 AMateria	*Ice::clone() const

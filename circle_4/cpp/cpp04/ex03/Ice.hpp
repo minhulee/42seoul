@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:09:25 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/05 15:13:32 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/06 08:20:32 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ class	Ice : public AMateria
 		Ice(const Ice &other);
 		~Ice();
 
-		Ice			&operator=(const Ice &other);
-
 		AMateria	*clone() const;
 		void		use(ICharacter &target);
+
+	private:
+		Ice				&operator=(const Ice &other);
 };
 
 #endif

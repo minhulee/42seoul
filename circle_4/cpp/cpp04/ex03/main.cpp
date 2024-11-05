@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:17:52 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/05 17:25:11 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/06 08:41:13 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 #include "./Cure.hpp"
 #include "./MateriaSource.hpp"
 #include "./Character.hpp"
+#include "AMateria.hpp"
 
-void	check()
-{
-	system("leaks AMATERIA");
-}
+//void	check()
+//{
+//	system("leaks AMATERIA");
+//}
 
-// MateriaSource()
 int	main(void)
 {
-	atexit(check);
+	//atexit(check);
 
 	IMateriaSource	*src = new MateriaSource();
 	
@@ -52,7 +52,7 @@ int	main(void)
 
 	std::cout << std::endl;
 	
-	ICharacter* bob = new Character("bob");
+	ICharacter	*bob = new Character("bob");
 
 	std::cout << std::endl;
 
@@ -73,16 +73,15 @@ int	main(void)
 
 	std::cout << std::endl;
 	
-	me->unequip(0);
-	me->unequip(1);
+	AMateria	*trash1 = dynamic_cast<Character *>(c)->exportMateria(0);
+	c->unequip(0);
 	
 	delete bob;
 	delete me;
 	delete c;
 	delete src;
 	delete src2;
-	delete tmp1;
-	delete tmp2;
+	delete trash1;
 
 	return (0);
 }

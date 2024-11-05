@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:12:45 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/05 17:13:15 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/06 08:28:24 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class	Character : public ICharacter
 		void				equip(AMateria *m);
 		void				unequip(int idx);
 		void				use(int idx, ICharacter &target);
+		AMateria			*exportMateria(int idx);
 
 	private:
 		Character();
