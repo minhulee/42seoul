@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:21:03 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/05 14:51:35 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 17:13:46 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ Character::Character(const Character &other)
 	std::cout << "Character :: Copy Constructor() called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
-		if (slot[i] != NULL)
+		if (other.slot[i] != NULL)
 			slot[i] = other.slot[i]->clone();
+		else
+			slot[i] = NULL;
 	}
 }
 
@@ -49,7 +51,7 @@ Character::~Character()
 	}
 }
 
-const Character	&Character::operator=(const Character &other)
+Character	&Character::operator=(const Character &other)
 {
 	std::cout << "Character :: Assignment Operator called" << std::endl;
 	if (this != &other)

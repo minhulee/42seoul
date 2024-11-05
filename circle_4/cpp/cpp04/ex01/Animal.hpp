@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:33:10 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/26 11:31:53 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 16:42:42 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class	Animal
 		Animal(const Animal &other);
 		virtual	~Animal();
 
-		const Animal	&operator=(const Animal &other);
+		Animal	&operator=(const Animal &other);
 
 		const std::string	&getType() const;
 		

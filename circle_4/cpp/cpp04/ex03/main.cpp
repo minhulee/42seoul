@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:17:52 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/05 14:53:47 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 17:25:11 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,21 @@ void	check()
 	system("leaks AMATERIA");
 }
 
+// MateriaSource()
 int	main(void)
 {
 	atexit(check);
 
-	IMateriaSource*	src = new MateriaSource();
+	IMateriaSource	*src = new MateriaSource();
 	
 	std::cout << std::endl;
 	
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
+
+	std::cout << std::endl;
+
+	IMateriaSource	*src2 = new MateriaSource(dynamic_cast<MateriaSource &>(*src));
 
 	std::cout << std::endl;
 	
@@ -38,11 +43,12 @@ int	main(void)
 	std::cout << std::endl;
 	
 	AMateria	*tmp1 = src->createMateria("ice");
-	AMateria	*tmp2 = src->createMateria("cure");
+	AMateria	*tmp2 = src2->createMateria("cure");
 	
 	std::cout << std::endl;
 	
 	me->equip(tmp1);
+	me->equip(tmp2);
 
 	std::cout << std::endl;
 	
@@ -74,6 +80,7 @@ int	main(void)
 	delete me;
 	delete c;
 	delete src;
+	delete src2;
 	delete tmp1;
 	delete tmp2;
 

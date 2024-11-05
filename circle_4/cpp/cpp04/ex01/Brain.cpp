@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:56:57 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/24 19:23:23 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 16:42:38 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Brain::~Brain()
 	std::cout << "Brain :: Destructor called" << std::endl;
 }
 
-const Brain	&Brain::operator=(const Brain &other)
+Brain	&Brain::operator=(const Brain &other)
 {
 	std::cout << "Brain :: Assignment Operator called" << std::endl;
 	if (this != &other)

@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:03:42 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/04 11:58:50 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 16:49:14 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(void)
 	//atexit(check);
 	
 	// Can't create Abstract Class's Instance...
-	//Animal a;
+	// Animal a;
 	
 	int	ea = 2;
 	Animal	*animals[ea];

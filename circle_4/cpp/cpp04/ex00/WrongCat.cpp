@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:50:45 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/16 18:03:52 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 17:27:26 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ WrongCat::~WrongCat()
 	std::cout << "WrongCat :: Destructor() called" << std::endl;
 }
 
-const WrongCat	&WrongCat::operator=(const WrongCat &other)
+WrongCat	&WrongCat::operator=(const WrongCat &other)
 {
 	std::cout << "WrongCat :: Assignment Operator called" << std::endl;
 	if (this != &other)

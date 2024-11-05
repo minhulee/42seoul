@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:36:33 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/04 11:40:20 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 16:42:46 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Animal::~Animal()
 	std::cout << "Animal :: Destructor() called" << std::endl;
 }
 
-const Animal	&Animal::operator=(const Animal &other)
+Animal	&Animal::operator=(const Animal &other)
 {
 	std::cout << "Animal :: Assignment Operator called" << std::endl;
 	if (this != &other)

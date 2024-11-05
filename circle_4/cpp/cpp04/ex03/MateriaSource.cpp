@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 22:07:16 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/05 12:21:08 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 17:12:24 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 {
 	std::cout << "MateriaSource :: Copy Constructor() called" << std::endl;
 	for (int i = 0; i < 4; i++)
-		source[i] = other.source[i];
+	{
+		if (other.source[i] != NULL)
+			source[i] = other.source[i]->clone();
+		else
+			source[i] = NULL;
+	}
 }
 
 MateriaSource::~MateriaSource()
@@ -37,14 +42,16 @@ MateriaSource::~MateriaSource()
 	}
 }
 
-const MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
+MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
 {
 	std::cout << "MateriaSource :: Assignment Operator called" << std::endl;
 	if (this != &other)
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			source[i] = other.source[i];
+			if (source[i] != NULL)
+				delete source[i];
+			source[i] = other.source[i]->clone();
 		}
 	}
 	return (*this);

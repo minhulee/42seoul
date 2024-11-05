@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:53:02 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/04 11:45:07 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 16:43:05 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Dog::~Dog()
 	delete brain;
 }
 
-const Dog	&Dog::operator=(const Dog &other)
+Dog	&Dog::operator=(const Dog &other)
 {
 	std::cout << "Dog :: Assignment Operator called" << std::endl;
 	if (this != &other)

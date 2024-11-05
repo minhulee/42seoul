@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:09:48 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/16 16:58:21 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 17:27:06 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	Dog
 		Dog(const Dog &other);
 		virtual ~Dog();
 
-		const Dog	&operator=(const Dog &other);
+		Dog	&operator=(const Dog &other);
 
 		virtual void	makeSound() const;
 };

@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:33:10 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/16 18:01:29 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 16:43:12 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class	WrongAnimal
 		WrongAnimal(const WrongAnimal &other);
 		virtual	~WrongAnimal();
 
-		const WrongAnimal	&operator=(const WrongAnimal &other);
+		WrongAnimal	&operator=(const WrongAnimal &other);
 
 		const std::string	&getType() const;
 		

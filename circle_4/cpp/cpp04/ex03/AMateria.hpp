@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:59:31 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/26 17:29:59 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 15:11:51 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ class AMateria
 	
 	private:
 		AMateria();
-
 };
 
 #endif

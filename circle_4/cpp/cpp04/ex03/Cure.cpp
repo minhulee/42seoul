@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:14:26 by minhulee          #+#    #+#             */
-/*   Updated: 2024/11/05 12:24:31 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 17:01:39 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Cure::~Cure()
 	std::cout << "Cure :: Destructor() called" << std:: endl;
 }
 
-const Cure	&Cure::operator=(const Cure &other)
+Cure	&Cure::operator=(const Cure &other)
 {
 	std::cout << "Cure :: Assignment Operator called" << std::endl;
 	if (this != &other)
