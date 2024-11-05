@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:36:33 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/16 17:03:13 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/04 11:57:29 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,4 @@ const std::string &Animal::getType() const
 {
 	std::cout << "Animal :: Method :: getType() called" << std::endl;
 	return (type);
-}
-
-void	Animal::makeSound() const
-{
-	std::cout << "Animal :: Method :: makeSound() called" << std::endl;
-	std::cout << "type is <None>, what ????" << std::endl;
 }

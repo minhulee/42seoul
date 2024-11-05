@@ -6,24 +6,22 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:53:02 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/26 11:26:06 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/04 11:45:07 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Dog.hpp"
 
 Dog::Dog()
-: Animal("Dog")
+: Animal("Dog"), brain(new Brain())
 {
 	std::cout << "Dog :: Default Constructor() called" << std::endl;
-	brain = new Brain();
 }
 
 Dog::Dog(const Dog &other)
-: Animal(other.type)
+: Animal(other.type), brain(new Brain(*other.brain))
 {
 	std::cout << "Dog :: Copy Constructor(type) called" << std::endl;
-	brain = new Brain(*other.brain);
 }
 
 Dog::~Dog()
@@ -49,4 +47,12 @@ void	Dog::makeSound() const
 {
 	std::cout << "Dog :: Method :: makeSound() called" << std::endl;
 	std::cout << "Bark, Bark !" << std::endl;
+}
+
+void	Dog::openMind() const
+{
+	std::cout << "Dog :: Method :: openMind() called" << std::endl;
+	std::cout << "my brain is " << brain << std::endl;
+	// for (int i = 0; i < 100; i++)
+	// 	std::cout << brain->getIdea(i) << std::endl;
 }

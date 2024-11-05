@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:14:26 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/26 16:57:10 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 12:19:31 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ const Ice	&Ice::operator=(const Ice &other)
 	{
 		this->type = other.type;
 	}
+	return (*this);
 }
 
 AMateria	*Ice::clone() const
@@ -43,7 +44,7 @@ AMateria	*Ice::clone() const
 	return (new Ice(*this));
 }
 
-void	use(ICharacter &target)
+void	Ice::use(ICharacter &target)
 {
 	std::cout << "Ice :: Method :: use() called" << std::endl;
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;

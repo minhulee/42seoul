@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:33:10 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/16 17:02:48 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/04 11:37:12 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class	Animal
 
 		const std::string	&getType() const;
 		
+	public:
 		virtual void		makeSound() const;
 
 	protected:

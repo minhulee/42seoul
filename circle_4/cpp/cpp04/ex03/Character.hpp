@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:12:45 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/26 22:23:55 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 14:44:23 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 class	Character : public ICharacter
 {
 	public:
-		Character();
 		Character(const std::string &name);
 		Character(const Character &other);
 		~Character();
@@ -32,6 +31,7 @@ class	Character : public ICharacter
 		void				use(int idx, ICharacter &target);
 
 	private:
+		Character();
 		std::string	name;
 		AMateria	*slot[4];
 };

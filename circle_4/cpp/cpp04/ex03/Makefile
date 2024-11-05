@@ -6,23 +6,22 @@
 #    By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 08:20:59 by minhulee          #+#    #+#              #
-#    Updated: 2024/11/04 11:54:13 by minhulee         ###   ########seoul.kr   #
+#    Updated: 2024/11/05 12:07:18 by minhulee         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 				= 		Brain
+NAME 				= 		AMATERIA
 CXX 				= 		c++
 CXXFLAGS 			= 		-Wall -Werror -Wextra -std=c++98
 
 INCLUDES 			=
 
-SRCS				=		main.cpp		\
-							Animal.cpp		\
-							Dog.cpp			\
-							Cat.cpp			\
-							WrongAnimal.cpp	\
-							WrongCat.cpp	\
-							Brain.cpp
+SRCS				=		main.cpp			\
+							AMateria.cpp		\
+							Character.cpp		\
+							Cure.cpp			\
+							Ice.cpp				\
+							MateriaSource.cpp	\
 
 OBJ				=		$(SRCS:.cpp=.o)
 

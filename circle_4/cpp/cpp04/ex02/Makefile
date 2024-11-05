@@ -6,11 +6,11 @@
 #    By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 08:20:59 by minhulee          #+#    #+#              #
-#    Updated: 2024/10/24 21:57:47 by minhulee         ###   ########seoul.kr   #
+#    Updated: 2024/11/04 11:56:38 by minhulee         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 				= 		Animal
+NAME 				= 		ABSTRACT
 CXX 				= 		c++
 CXXFLAGS 			= 		-Wall -Werror -Wextra -std=c++98
 

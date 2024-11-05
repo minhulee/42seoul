@@ -6,11 +6,12 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 22:07:16 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/26 22:26:19 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 12:21:08 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./MateriaSource.hpp"
+#include "AMateria.hpp"
 
 MateriaSource::MateriaSource()
 {
@@ -20,7 +21,6 @@ MateriaSource::MateriaSource()
 }
 
 MateriaSource::MateriaSource(const MateriaSource &other)
-: MateriaSource()
 {
 	std::cout << "MateriaSource :: Copy Constructor() called" << std::endl;
 	for (int i = 0; i < 4; i++)
@@ -47,4 +47,33 @@ const MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
 			source[i] = other.source[i];
 		}
 	}
+	return (*this);
+}
+
+void	MateriaSource::learnMateria(AMateria *m)
+{
+	std::cout << "MateriaSource :: learnMateria() called" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (source[i] == NULL)
+		{
+			std::cout << i << "'s slot learn " << m->getType() << " !" << std::endl;
+			source[i] = m;
+			break ;
+		}
+	}
+}
+
+AMateria	*MateriaSource::createMateria(const std::string &type)
+{
+	std::cout << "MateriaSource :: createMateria() called" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (source[i] == NULL)
+			break ;
+		if (source[i]->getType() == type)
+			return (source[i]->clone());
+	}
+	std::cout << type << " is not learned" << std::endl;
+	return (static_cast<AMateria *>(NULL));
 }

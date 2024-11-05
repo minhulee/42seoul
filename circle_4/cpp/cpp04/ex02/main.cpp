@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:03:42 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/24 21:57:24 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/04 11:58:50 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 #include "./Cat.hpp"
 #include "./Dog.hpp"
 
-// void	check()
-// {
-// 	system("leaks Brain");
-// }
+//void	check()
+//{
+//	system("leaks ABSTRACT");
+//}
 
 int main(void)
 {
-	// atexit(check);
-	// Animal	a = Animal();
+	//atexit(check);
 	
-	int	ea = 4;
+	// Can't create Abstract Class's Instance...
+	//Animal a;
+	
+	int	ea = 2;
 	Animal	*animals[ea];
 
 	for (int i = 0; i < ea; i++)
@@ -41,19 +43,32 @@ int main(void)
 		delete animals[i];
 
 	std::cout << std::endl;
+	
+	Cat	src, dst;
 
-	Cat	a = Cat();
-	a.openMind();
+	std::cout << std::endl;
+
+	src.openMind();
+
+	std::cout << std::endl;
+
+	dst.openMind();
 
 	std::cout << std::endl;
 	
-	Cat b = a;
-	b.openMind();
-	
+	src = dst;
+
 	std::cout << std::endl;
 	
-	b = a;
-	b.openMind();
+	src.openMind();
+	
+	std::cout << std::endl;
+
+	Cat tmp = src;
+
+	std::cout << std::endl;
+
+	tmp.openMind();
 
 	std::cout << std::endl;
 	return (0);

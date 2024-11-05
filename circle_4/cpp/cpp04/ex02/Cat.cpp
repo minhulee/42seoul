@@ -6,25 +6,23 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:50:45 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/26 17:19:22 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/04 11:42:27 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "./Cat.hpp"
 
 Cat::Cat()
-: Animal("Cat")
+: Animal("Cat"), brain(new Brain())
 {
 	std::cout << "Cat :: Default Constructor() called" << std::endl;
-	brain = new Brain();
 }
 
 
 Cat::Cat(const Cat &other)
-: Animal(other.type)
+: Animal(other.type), brain(new Brain(*other.brain))
 {
 	std::cout << "Cat :: Copy Constructor(other) called" << std::endl;
-	brain = new Brain(*other.brain);
 }
 
 Cat::~Cat()

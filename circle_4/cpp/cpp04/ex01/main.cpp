@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:03:42 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/26 11:32:45 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/04 11:55:44 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 #include "./Cat.hpp"
 #include "./Dog.hpp"
 
-// void	check()
-// {
-// 	system("leaks Brain");
-// }
+//void	check()
+//{
+//	system("leaks Brain");
+//}
 
 int main(void)
 {
-	// atexit(check);
+	//atexit(check);
 	
-	int	ea = 4;
+	int	ea = 2;
 	Animal	*animals[ea];
 
 	for (int i = 0; i < ea; i++)
@@ -33,26 +33,39 @@ int main(void)
 		else
 			animals[i] = new Cat();
 	}
-	
+
 	std::cout << std::endl;
 	
 	for (int i = 0; i < ea; i++)
 		delete animals[i];
 
 	std::cout << std::endl;
+	
+	Cat	src, dst;
 
-	Cat	a = Cat();
-	a.openMind();
+	std::cout << std::endl;
+
+	src.openMind();
+
+	std::cout << std::endl;
+
+	dst.openMind();
 
 	std::cout << std::endl;
 	
-	Cat b = a;
-	b.openMind();
-	
+	src = dst;
+
 	std::cout << std::endl;
 	
-	b = a;
-	b.openMind();
+	src.openMind();
+	
+	std::cout << std::endl;
+
+	Cat tmp = src;
+
+	std::cout << std::endl;
+
+	tmp.openMind();
 
 	std::cout << std::endl;
 	return (0);

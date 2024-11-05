@@ -6,11 +6,12 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:21:03 by minhulee          #+#    #+#             */
-/*   Updated: 2024/10/26 22:24:41 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2024/11/05 14:51:35 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Character.hpp"
+#include "AMateria.hpp"
 
 Character::Character()
 {
@@ -23,18 +24,18 @@ Character::Character(const std::string &name)
 : name(name)
 {
 	std::cout << "Character :: Constructor(name) called" << std::endl;
-
+	for (int i = 0; i < 4; i++)
+		slot[i] = NULL;
 }
 
 Character::Character(const Character &other)
 : name(other.name)
 {
 	std::cout << "Character :: Copy Constructor() called" << std::endl;
-	name = other.name;
 	for (int i = 0; i < 4; i++)
 	{
-		delete slot[i];
-		slot[i] = other.slot[i];
+		if (slot[i] != NULL)
+			slot[i] = other.slot[i]->clone();
 	}
 }
 
@@ -56,8 +57,9 @@ const Character	&Character::operator=(const Character &other)
 		name = other.name;
 		for (int i = 0; i < 4; i++)
 		{
-			delete slot[i];
-			slot[i] = other.slot[i];
+			if (slot[i] != NULL)
+				delete slot[i];
+			slot[i] = other.slot[i]->clone();
 		}
 	}
 	return (*this);
@@ -72,6 +74,8 @@ const std::string	&Character::getName() const
 void	Character::equip(AMateria *m)
 {
 	std::cout << "Character :: Method :: equip() called" << std::endl;
+	if (!m)
+		return ;
 	for (int i = 0; i < 4; i++)
 	{
 		if (slot[i] == NULL)
@@ -85,14 +89,15 @@ void	Character::equip(AMateria *m)
 void	Character::unequip(int idx)
 {
 	std::cout << "Character :: Method :: unequip() called" << std::endl;
-	if (idx < 0 || 3 < idx)
+	if ((idx < 0 || 3 < idx) || !slot[idx])
 		return ;
 	slot[idx] = NULL;
 }
 
 void	Character::use(int idx, ICharacter &target)
 {
-	if (idx < 0 || 3 < idx)
+	std::cout << "Character :: Method :: use() called" << std::endl;
+	if ((idx < 0 || 3 < idx) || !slot[idx])
 		return ;
 	slot[idx]->use(target);
 }
