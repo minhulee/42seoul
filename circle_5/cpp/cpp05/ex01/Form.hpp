@@ -1,49 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 15:31:00 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/07 13:27:07 by minhulee         ###   ########seoul.kr  */
+/*   Created: 2025/01/07 12:36:46 by minhulee          #+#    #+#             */
+/*   Updated: 2025/01/07 13:22:22 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
- #define BUREAUCRAT_HPP
+#include <string>
+#include "./Bureaucrat.hpp"
 
-# include <exception>
-# include <string>
-# include <iostream>
-
-class	Bureaucrat
+class Form
 {
 	/* OCF */
 	public:
-		Bureaucrat(const std::string &name, const int grade);
-		Bureaucrat(const Bureaucrat &other);
-		~Bureaucrat();
-
-		Bureaucrat	&operator=(const Bureaucrat &other);
-
-	/* Methods */
-	public:
-		std::string	getName() const;
-		int			getGrade() const;
-
-		void		incrementGrade();
-		void		decrementGrade();
+		Form(const std::string name, const int signGrade, const int excuteGrade);
+		Form(const Form &other);
+		~Form();
 
 	private:
-		void		validGrade(int grade);
-		void		setGrade(int grade);
+		Form		&operator=(const Form &other); // Don't do that, = delete in C++11
 	
+	/* Methods*/
+	public:
+		std::string			getName() 			const;
+		bool				getIsSigned() 		const;
+		int					getSignGrade() 		const;
+		int					getExceuteGrade() 	const;
+
+		void				beSigned(Bureaucrat &br);
+	
+	private:
+		int					validGrade(const int grade) const;
+
 	/* Members */
 	private:
 		const std::string	name;
-		int					grade; // 1 ~ 150 grade
-
+		bool				isSigned;
+		const int			signGrade;
+		const int			excuteGrade;
+	
 	/* Exception */
 	class GradeTooHighException : public std::exception {
 		public:
@@ -55,7 +54,3 @@ class	Bureaucrat
 			const char* what() const throw();
 	};
 };
-
-std::ostream	&operator<<(std::ostream& os, Bureaucrat& rhs);
-
-#endif
