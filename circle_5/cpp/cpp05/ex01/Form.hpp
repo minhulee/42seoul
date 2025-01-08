@@ -6,12 +6,17 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:36:46 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/07 13:22:22 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/08 15:20:00 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FORM_HPP
+ #define FORM_HPP
+
 #include <string>
-#include "./Bureaucrat.hpp"
+#include <iostream>
+
+class Bureaucrat;
 
 class Form
 {
@@ -29,9 +34,9 @@ class Form
 		std::string			getName() 			const;
 		bool				getIsSigned() 		const;
 		int					getSignGrade() 		const;
-		int					getExceuteGrade() 	const;
+		int					getExcuteGrade() 	const;
 
-		void				beSigned(Bureaucrat &br);
+		void				beSigned(const Bureaucrat &br);
 	
 	private:
 		int					validGrade(const int grade) const;
@@ -54,3 +59,7 @@ class Form
 			const char* what() const throw();
 	};
 };
+
+std::ostream&	operator<<(std::ostream &os, Form &f);
+
+#endif

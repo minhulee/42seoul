@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:31:00 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/07 13:26:46 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/08 15:52:42 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <exception>
 # include <string>
 # include <iostream>
+
+class	Form;
 
 class	Bureaucrat
 {
@@ -34,6 +36,8 @@ class	Bureaucrat
 
 		void		incrementGrade();
 		void		decrementGrade();
+
+		void		signForm(Form &f);
 
 	private:
 		void		validGrade(int grade);

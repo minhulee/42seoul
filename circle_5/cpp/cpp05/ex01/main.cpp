@@ -6,62 +6,19 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:09:43 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/07 12:35:46 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/08 15:58:19 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Bureaucrat.hpp"
+#include "./Form.hpp"
 
 int main(void)
 {
-	{
-		// getter
-		Bureaucrat tommy("Tommy", 17);
+	Form		f("f", 5, 100);
+	Bureaucrat	b("b", 6);
 
-		std::cout << "name : " << tommy.getGrade() << ", grade : " << tommy.getGrade() << std::endl;
-	}
-
-	{
-		// Too High
-		Bureaucrat	tommy("Tommy", 1);
-		
-		try 
-		{
-			tommy.incrementGrade();
-		} 
-		catch(std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
-		
-		tommy.decrementGrade();
-
-		std::cout << tommy << std::endl;
-	}
-
-	{
-		// Too Low
-		Bureaucrat	tommy("Tommy", 150);
-
-		try
-		{
-			tommy.decrementGrade();
-		}
-		catch(std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
-	}
-
-	// Constructor in invalid grade
-	try 
-	{
-		Bureaucrat	kane("Kane", 151);
-	} 
-	catch(std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	b.signForm(f);
 	
 	return (0);
 }
