@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:51:25 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/08 16:00:15 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/08 16:18:22 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	Form::beSigned(const Bureaucrat &br)
 
 int	Form::validGrade(const int grade) const
 {
+	std::cout << "Form :: Method :: validGrade() called" << std::endl;
 	if (grade < 1)
 		throw GradeTooHighException();
 	else if (grade > 150)
@@ -84,6 +85,6 @@ const char*	Form::GradeTooLowException::what() const throw()
 
 std::ostream&	operator<<(std::ostream &os, Form &f)
 {
-	os << f.getName() << ", signGrade : " << f.getSignGrade() << ", excuteGrade : " << f.getExcuteGrade() << ", signed : " << f.getIsSigned() << ".";
+	os << f.getName() << ", signGrade : " << f.getSignGrade() << ", excuteGrade : " << f.getExcuteGrade() << ", signed : " << (f.getIsSigned() ? "true" : "false") << "." << std::endl;
 	return os;
 }

@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:09:43 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/08 15:58:19 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/08 16:19:53 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,44 @@
 
 int main(void)
 {
-	Form		f("f", 5, 100);
-	Bureaucrat	b("b", 6);
+	{
+		try
+		{
+			Form	f("f", 0, 100);
+			
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
 
-	b.signForm(f);
+	std::cout << std::endl;
+
+	{
+		try
+		{
+			Form	f("f", 151, 100);
+			
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+
+	std::cout << std::endl;
+
+	{
+		Form		f("f", 5, 100);
+		Bureaucrat	b("b", 6);
+
+		std::cout << f.getName() << ", " << f.getSignGrade() << ", " << f.getExcuteGrade() << ", " << f.getIsSigned() << "." << std::endl;
+		b.signForm(f);
+		b.incrementGrade();
+		b.signForm(f);
+		std::cout << f;
+	}
 	
 	return (0);
 }
