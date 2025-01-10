@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:58:54 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 17:55:52 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/10 17:16:25 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ class	PresidentialPardonForm : public AForm
 	/* Members*/
 	private:
 		std::string	target;
+
+	/* exception */
 };
 
 #endif

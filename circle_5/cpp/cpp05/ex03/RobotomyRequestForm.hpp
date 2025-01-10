@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:58:54 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 17:55:52 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/10 17:16:34 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIALPARDONFORM_HPP
- #define PRESIDENTIALPARDONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+ #define ROBOTOMYREQUESTFORM_HPP
 
 # include "AForm.hpp"
 
-class	PresidentialPardonForm : public AForm
+class	RobotomyRequestForm : public AForm
 {
 	/* OCF */
 	public:
-		PresidentialPardonForm(const std::string target);
-		PresidentialPardonForm(const PresidentialPardonForm &other);
-		~PresidentialPardonForm();
+		RobotomyRequestForm(const std::string target);
+		RobotomyRequestForm(const RobotomyRequestForm &other);
+		~RobotomyRequestForm();
 	
 	private:
-		PresidentialPardonForm	&operator=(const PresidentialPardonForm &other);
+		RobotomyRequestForm	&operator=(const RobotomyRequestForm &other);
 		
 	/* Methods */
 	public:
 		std::string	getTarget() 					const;
 		void		excute(const Bureaucrat &br)	const;
 
-	/* Members*/
+	/* Members */
 	private:
 		std::string	target;
+
+	/* exception */
 };
 
 #endif
