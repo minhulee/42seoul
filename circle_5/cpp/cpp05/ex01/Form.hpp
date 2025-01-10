@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:36:46 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/08 15:20:00 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/10 17:29:38 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ class Form
 		void				beSigned(const Bureaucrat &br);
 	
 	private:
-		int					validGrade(const int grade) const;
+		int					validGradeRange(const int grade) const;
+		void				validSignGrade(const int grade) const;
 
 	/* Members */
 	private:
