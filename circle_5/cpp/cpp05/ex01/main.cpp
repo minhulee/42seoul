@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:09:43 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 17:30:39 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/10 17:46:08 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(void)
 
 		std::cout << f.getName() << ", " << f.getSignGrade() << ", " << f.getExcuteGrade() << ", " << f.getIsSigned() << "." << std::endl;
 		b.signForm(f);
-		b.incrementGrade();
+		//b = Bureaucrat("tmp", 1);
 		b.signForm(f);
 		std::cout << f;
 	}

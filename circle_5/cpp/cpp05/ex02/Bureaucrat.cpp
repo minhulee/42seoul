@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:48:57 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 17:24:58 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/10 17:44:18 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat :: Destructor called" << std::endl;
+	std::cout << "Bureaucrat :: Destructor() called" << std::endl;
 }
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other)
 {
 	std::cout << "Bureaucrat :: Assignment Operator called" << std::endl;
 	if (this != &other)
-		setGrade(grade);
+		setGrade(other.grade);
 	return (*this);
 }
 
@@ -88,7 +88,7 @@ void	Bureaucrat::signForm(AForm &f)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << getName() << " couldn't sign " << f.getName() << " because " << e.what() << std::endl;
+		std::cerr << getName() << " couldn't sign " << f.getName() << " because " << e.what() << std::endl;
 		return ;
 	}
 	std::cout << getName() << " signd " << f.getName() << "." << std::endl;
@@ -103,7 +103,7 @@ void	Bureaucrat::excuteForm(AForm &f)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << getName() << " couldn't excute " << f.getName() << " because " << e.what() << std::endl;
+		std::cerr << getName() << " couldn't excute " << f.getName() << " because " << e.what() << std::endl;
 		return ;
 	}
 	std::cout << getName() << " excute " << f.getName() << "." << std::endl;

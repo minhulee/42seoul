@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:51:25 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 17:11:19 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/10 17:39:44 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,21 @@ int	AForm::validGradeRange(const int grade) const
 
 void	AForm::validSignGrade(const int grade) const
 {
+	std::cout << "AForm :: Method :: validSignGrade() called" << std::endl;
 	if (getSignGrade() < grade)
 		throw GradeTooLowException();
 }
 
 void	AForm::validExcuteGrade(const int grade) const
 {
+	std::cout << "AForm :: Method :: validExcuteGrade() called" << std::endl;
 	if (getExcuteGrade() < grade)
 		throw GradeTooLowException();
 }
 
 void	AForm::validFormSigned() const
 {
+	std::cout << "AForm :: Method :: validFormSigned() called" << std::endl;
 	if (!getIsSigned())
 		throw FormNotSignedException();
 }

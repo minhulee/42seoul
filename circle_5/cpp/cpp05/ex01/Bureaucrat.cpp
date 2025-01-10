@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:48:57 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/08 15:59:02 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/10 17:45:21 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@
 Bureaucrat::Bureaucrat(const std::string &name, const int grade)
 : name(name)
 {
-	std::cout << "Bureaucrat :: Constructor called" << std::endl;
+	std::cout << "Bureaucrat :: Constructor() called" << std::endl;
 	setGrade(grade);
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
 : name(other.name), grade(other.grade)
 {
-	std::cout << "Bureaucrat :: Copy Constructor called" << std::endl;
+	std::cout << "Bureaucrat :: Copy Constructor() called" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat :: Destructor called" << std::endl;
+	std::cout << "Bureaucrat :: Destructor() called" << std::endl;
 }
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other)
 {
 	std::cout << "Bureaucrat :: Assignment Operator called" << std::endl;
 	if (this != &other)
-		setGrade(grade);
+		setGrade(other.grade);
 	return (*this);
 }
 
