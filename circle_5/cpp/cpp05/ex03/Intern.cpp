@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:01:08 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 19:08:13 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/10 19:18:47 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,32 @@ Intern::~Intern()
 
 AForm	*Intern::makeShrubberyCreationForm(const std::string target)
 {
-	return (static_cast<AForm *>(new ShrubberyCreationForm(target)));
+	std::cout << "Intern :: Method :: makeShrubberyCreationForm() called" << std::endl;
+	return (new ShrubberyCreationForm(target));
 }
 
 AForm	*Intern::makeRobotomyRequestForm(const std::string target)
 {
-	return (static_cast<AForm *>(new RobotomyRequestForm(target)));
+	std::cout << "Intern :: Method :: makeRobotomyRequestForm() called" << std::endl;
+	return (new RobotomyRequestForm(target));
 }
 
 AForm	*Intern::makePresidentialPardonForm(const std::string target)
 {
-	return (static_cast<AForm *>(new PresidentialPardonForm(target)));
+	std::cout << "Intern :: Method :: makePresidentialPardonForm() called" << std::endl;
+	return (new PresidentialPardonForm(target));
 }
 
 AForm	*Intern::makeForm(std::string type, const std::string target)
 {
+	std::cout << "Intern :: Method :: makeForm() called" << std::endl;
 	for (int i = 0; i < 3; i++)
 	{
 		if (type == list[i])
 			return (this->*creators[i])(target);
 	}
 	std::cerr << "Intern :: Exception :: Invalid Form Exception" << std::endl;
-	return (nullptr);
+	return (NULL);
 	//throw (InvalidFormException());
 }
 
