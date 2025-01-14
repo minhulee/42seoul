@@ -6,14 +6,13 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 19:27:26 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/14 19:31:01 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/14 19:32:07 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cctype>
 #include <climits>
 #include <exception>
-#include <ios>
 #include <iostream>
 #include <sstream>
 #include <cmath>
