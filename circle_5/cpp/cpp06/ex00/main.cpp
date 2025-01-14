@@ -6,17 +6,17 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:12:08 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/13 22:11:12 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/14 16:46:04 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ScalarConverter.hpp"
 
+// 42, 42f, 42., 42.0, 42.0f - 각각 c++에서 변환가능한 메소드가 존재한다.
 int	main(int ac, char **av)
 {
-	if (ac == 1)
-		return (0);
-	ScalarConverter::convert(av[1]);
+	if (ac == 2)
+		ScalarConverter::convert(av[1]);
 	
 	return (0);
 }

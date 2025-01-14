@@ -6,58 +6,77 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 19:27:26 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/13 23:00:13 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/14 19:31:01 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cctype>
+#include <climits>
+#include <exception>
+#include <ios>
+#include <iostream>
 #include <sstream>
 #include <cmath>
+#include <limits>
+#include <iomanip>
 #include "./ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter() {};
 ScalarConverter::~ScalarConverter() {};
 
-std::string	ScalarConverter::isInf(std::string &input)
+int	ScalarConverter::getN(std::string &input)
 {
-	if (input.find("inf") == 0)
-		return ("+inf");
-	else if (input.find("-inf") == 0)
-		return ("-inf");
-	return ("");
+	int integerPart = static_cast<int>(stod(input));
+	int digitCount = static_cast<int>(log10(fabs(integerPart))) + 1;
+	return digitCount;
 }
 
-std::string	ScalarConverter::isNan(std::string &input)
+// isInf, isNan,
+// 전반부 -> floor를 구현하라는게 아니라, leak -> main에서 명시적으로 delete
+// 시험볼 때 main문을 내가 안적어 근데 spell 제거해라 이ㄹ
+bool	ScalarConverter::convertJustChar(std::string &input)
 {
-	if (input.find("nan") == 0)
-		return ("nan");
-	return ("");
+	if (input.size() != 1)
+		return (false);
+
+	char	c = input[0];
+	if (!isprint(c) || ('0' <= c && c <= '9'))
+		return (false);
+
+	std::cout << "char: " << "'" << c << "'\n"
+			  << "int: " << static_cast<int>(c) << "\n"
+			  << "float: " << static_cast<float>(c) << ".0f\n"
+			  << "double: " << static_cast<double>(c) << ".0\n";
+
+	return (true);
 }
 
-bool	ScalarConverter::isNumber(std::string &input)
+char	ScalarConverter::stoc(std::string &input)
+{
+	if (stoi(input) < CHAR_MIN || CHAR_MAX < stoi(input))
+		throw (OutOfRangeExc());
+	return (static_cast<char>(stoi(input)));
+}
+
+int	ScalarConverter::stoi(std::string &input)
 {
 	std::stringstream	ss(input);
-	int					target;
-	char				rest;
+	long long			res;
 
-	ss >> target;
-	if (ss.eof() && !ss.fail())
-		return (true);
-	else
-		ss >> rest;
-	return (rest == '.');
+	ss >> res;
+	if (ss.fail())
+		throw (ConvertFailExc());
+
+	char	c;
+	if (ss >> c && c != '.')
+		throw (ConvertFailExc());
+
+	if (res < std::numeric_limits<int>::min() || std::numeric_limits<int>::max() < res)
+		throw (OutOfRangeExc());
+	return (static_cast<int>(res));
 }
 
-int	ScalarConverter::strToInt(std::string &input)
-{
-	std::stringstream	ss(input);
-	int					i;
-
-	ss >> i;
-	return (i);
-}
-
-float	ScalarConverter::strToFloat(std::string &input)
+float	ScalarConverter::stof(std::string &input)
 {
 	size_t				idx;
 
@@ -66,13 +85,17 @@ float	ScalarConverter::strToFloat(std::string &input)
 		input = input.substr(0, idx);
 	
 	std::stringstream	ss(input);
-	float				f;
+	double				res;
 	
-	ss >> f;
-	return (f);
+	ss >> res;
+	if (ss.fail())
+		throw (ConvertFailExc());
+	if (res < std::numeric_limits<float>::lowest() || std::numeric_limits<float>::max() < res)
+		throw (OutOfRangeExc());
+	return (static_cast<float>(res));
 }
 
-double	ScalarConverter::strToDouble(std::string &input)
+double	ScalarConverter::stod(std::string &input)
 {
 	size_t				idx;
 
@@ -81,102 +104,98 @@ double	ScalarConverter::strToDouble(std::string &input)
 		input = input.substr(0, idx);
 	
 	std::stringstream	ss(input);
-	double				d;
+	double				res;
 	
-	ss >> d;
-	return (d);
+	ss >> res;
+	if (ss.fail())
+		throw (ConvertFailExc());
+	if (res == std::numeric_limits<double>::infinity())
+		throw (OutOfRangeExc());
+	return (res);
 }
-
-// 문자열로 들어올 때 and 숫자로 들어올 떄
-// 32 ~ 126
 
 void	ScalarConverter::convertChar(std::string &input)
 {
-	std::ostringstream	os;
-	int					target;
-	
-	os << "char: ";
-	if (isNumber(input))
+	std::cout << "char: ";
+	try
 	{
-		target = strToFloat(input);
-		if (target == 0)
-			os << "impossible";
-		else if (isprint(target))
-			os << "'" << static_cast<char>(target) << "'";
+		stof(input);
+		if (isprint(stoc(input)))
+			std::cout << "'" << stoc(input) << "'";
 		else
-			os << "Non displayable";
+			std::cout << "Non displayable";
+		std::cout << std::endl;
 	}
-	else if (input.size() == 1)
-		os << "'" << input[0] << "'";
-	else
-		os << "impossible";
-	std::cout << os.str() << std::endl;
+	catch (std::exception &e)
+	{
+		std::cout << "impossible :: " << e.what();
+		return ;
+	}
 }
 
-// 문자열 -> 숫자로
-// 숫자 -> 그대로
 void	ScalarConverter::convertInt(std::string &input)
-{
-	std::ostringstream	os;
-	int					target;
-
-	os << "int: ";
-	if (isNumber(input))
+{	
+	std::cout << "int: ";
+	try
 	{
-		target = strToFloat(input);
-		if (target == 0)
-			os << "impossible";
-		else
-			os << strToInt(input);
+		stof(input);
+		std::cout << stoi(input) << std::endl;;
 	}
-	else
-		os << static_cast<int>(input[0]);
-	std::cout << os.str() << std::endl;
+	catch (std::exception &e)
+	{
+		std::cout << "impossible :: " << e.what();
+	}
 }
 
 void	ScalarConverter::convertFloat(std::string &input)
 {
-	std::ostringstream	os;
-	float				target;
-
-	os << "float: ";
-	os << isNan(input) << isInf(input);
-	if (isNumber(input))
+	std::cout << "float: ";
+	try
 	{
-		target = strToFloat(input);
-		if (target == 0.0)
-			os << "impossible";
-		else
+		if (getN(input) < 7)
 		{
-			os << target;
-			if (floor(strToFloat(input)) == strToFloat(input))
-				os << ".0f";
+			std::cout << std::setprecision(getN(input) + 7) << stof(input);
+			if (static_cast<int>(stof(input)) == stof(input))
+				std::cout << ".0f";
 			else
-				os << "f";
+				std::cout << "f";
 		}
+		else
+			std::cout << stof(input);
+		std::cout << std::endl;
 	}
-	else
-		os << static_cast<int>(input[0]);
-	std::cout << os.str() << std::endl;
+	catch (std::exception &e)
+	{
+		std::cout << "impossible :: " << e.what();
+	}
 }
 
 void	ScalarConverter::convertDouble(std::string &input)
 {
-	std::ostringstream	os;
-
-	os << "double: ";
-	if (isNumber(input))
-		os << strToDouble(input);
-	else
-		os << static_cast<int>(input[0]);
-	std::cout << os.str() << std::endl;
+	std::cout << "double: ";
+	try
+	{
+		if (getN(input) < 7)
+		{
+			std::cout << std::setprecision(getN(input) + 16) << stod(input);
+			if (static_cast<int>(stod(input)) == stod(input))
+				std::cout << ".0";
+		}
+		else
+			std::cout << stod(input);
+		std::cout << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "impossible :: " << e.what() << std::endl;
+	}
 }
 
 // inf, nan
 void	ScalarConverter::convert(std::string input)
 {
 	ScalarConverter	converter;
-	if (input.find("nan") == 0)
+	if (input.find("nan") == 0 && input.size() == 3)
 	{
 		std::ostringstream	ss;
 		ss << "char : impossible\n";
@@ -185,7 +204,7 @@ void	ScalarConverter::convert(std::string input)
 		ss << "double : nan\n";
 		std::cout << ss.str() << std::endl;
 	}
-	else if (input.find("inf") == 0 || input.find("+inf") == 0)
+	else if ((input.find("inf") == 0 && input.size() == 3) || (input.find("+inf") == 0 && input.size() == 4))
 	{
 		std::ostringstream	ss;
 		ss << "char : impossible\n";
@@ -194,7 +213,7 @@ void	ScalarConverter::convert(std::string input)
 		ss << "double : +inf\n";
 		std::cout << ss.str() << std::endl;
 	}
-	else if (input.find("-inf") == 0)
+	else if (input.find("-inf") == 0 && input.size() == 4)
 	{
 		std::ostringstream	ss;
 		ss << "char : impossible\n";
@@ -205,6 +224,8 @@ void	ScalarConverter::convert(std::string input)
 	}
 	else
 	{
+		if (converter.convertJustChar(input))
+			return ;
 		converter.convertChar(input);
 		converter.convertInt(input);
 		converter.convertFloat(input);
@@ -212,3 +233,12 @@ void	ScalarConverter::convert(std::string input)
 	}
 }
 
+const char	*ScalarConverter::ConvertFailExc::what() const throw()
+{
+	return ("ScalarConverter :: Exception :: Convert Fail.\n");
+}
+
+const char	*ScalarConverter::OutOfRangeExc::what() const throw()
+{
+	return ("ScalarConverter :: Exception :: Out of Range.\n");
+}

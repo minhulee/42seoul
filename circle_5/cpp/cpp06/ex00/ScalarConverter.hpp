@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 19:24:13 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/13 22:23:22 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/14 19:17:07 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
  #define SCALARCONVERTER_HPP
 
 #include <string>
-#include <iostream>
 
 class	ScalarConverter
 {
@@ -27,14 +26,13 @@ class	ScalarConverter
 	
 	/* Method */
 	private:
-		std::string		isInf(std::string &input);
-		std::string		isNan(std::string &input);
-		bool			isNumber(std::string &input);
+		int				getN(std::string &input);
+		char			stoc(std::string &input);
+		int				stoi(std::string &input);
+		float			stof(std::string &input);
+		double			stod(std::string &input);
 
-		int				strToInt(std::string &input);
-		float			strToFloat(std::string &input);
-		double			strToDouble(std::string &input);
-
+		bool			convertJustChar(std::string &input);
 		void			convertChar(std::string &input);
 		void			convertInt(std::string &input);
 		void			convertFloat(std::string &input);
@@ -42,12 +40,21 @@ class	ScalarConverter
 
 	public:
 		static void		convert(std::string	input);
-		// ㅇㅒ느ㄴ 호출될 때 객체가 없으 수도 있다.
-		// 모든 함수를 static으로 하던가
-		// convert 내부에서 scalar를 잠깐 만들던가
 	
 	/* Member */
 	/* Exception*/
+	private:
+		class	ConvertFailExc : public std::exception
+		{
+			public:
+				const char * what() const throw();
+		};
+		
+		class	OutOfRangeExc : public std::exception
+		{
+			public:
+				const char * what() const throw();
+		};
 };
 
 #endif
