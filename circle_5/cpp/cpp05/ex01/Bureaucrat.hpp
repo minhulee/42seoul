@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:31:00 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/08 15:52:42 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/16 14:23:37 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class	Bureaucrat
 		void		signForm(Form &f);
 
 	private:
-		void		validGrade(int grade);
+		int			validGrade(int grade);
 		void		setGrade(int grade);
 	
 	/* Members */

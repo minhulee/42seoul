@@ -6,18 +6,17 @@
 #    By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 08:20:59 by minhulee          #+#    #+#              #
-#    Updated: 2025/01/08 15:57:28 by minhulee         ###   ########seoul.kr   #
+#    Updated: 2024/11/11 16:12:01 by minhulee         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 				= 		FORM
+NAME 				= 		BUREAUCRAT
 CXX 				= 		c++
 CXXFLAGS 			= 		-Wall -Werror -Wextra -std=c++98
 
 INCLUDES 			=
 
 SRCS				=		./Bureaucrat.cpp	\
-							./Form.cpp			\
 							./main.cpp
 
 OBJ				=		$(SRCS:.cpp=.o)

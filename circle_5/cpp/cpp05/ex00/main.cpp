@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:09:43 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/07 13:27:11 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/16 14:22:20 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,26 @@
 int main(void)
 {
 	{
-		// getter
+		// getter and operator<<
 		Bureaucrat tommy("Tommy", 17);
 
-		std::cout << "name : " << tommy.getGrade() << ", grade : " << tommy.getGrade() << std::endl;
+		std::cout << "name : " << tommy.getName() << ", grade : " << tommy.getGrade() << std::endl;
+		std::cout << tommy << std::endl;
 	}
+	std::cout << std::endl;
+
+	{
+		// Constructor in invalid grade
+		try 
+		{
+			Bureaucrat	kane("Kane", 151);
+		} 
+		catch(std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+	std::cout << std::endl;
 
 	{
 		// Too High
@@ -38,6 +53,7 @@ int main(void)
 
 		std::cout << tommy << std::endl;
 	}
+	std::cout << std::endl;
 
 	{
 		// Too Low
@@ -51,16 +67,9 @@ int main(void)
 		{
 			std::cout << e.what() << std::endl;
 		}
-	}
+		tommy.incrementGrade();
 
-	// Constructor in invalid grade
-	try 
-	{
-		Bureaucrat	kane("Kane", 151);
-	} 
-	catch(std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
+		std::cout << tommy << std::endl;
 	}
 	
 	return (0);

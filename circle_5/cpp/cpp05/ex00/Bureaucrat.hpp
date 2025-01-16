@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:31:00 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/07 13:27:07 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/16 14:12:35 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class	Bureaucrat
 		void		decrementGrade();
 
 	private:
-		void		validGrade(int grade);
+		int			validGrade(int grade);
 		void		setGrade(int grade);
 	
 	/* Members */

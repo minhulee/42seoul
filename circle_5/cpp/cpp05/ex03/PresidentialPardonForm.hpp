@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:58:54 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 17:16:25 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/14 21:52:06 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class	PresidentialPardonForm : public AForm
 {
 	/* OCF */
 	public:
-		PresidentialPardonForm(const std::string target);
+		PresidentialPardonForm(const std::string target); // default
 		PresidentialPardonForm(const PresidentialPardonForm &other);
 		~PresidentialPardonForm();
 	

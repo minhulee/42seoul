@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:51:25 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 17:31:04 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/14 21:35:32 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	Form::beSigned(const Bureaucrat &br)
 {
 	std::cout << "Form :: Method :: beSigned() called" << std::endl;
 	validSignGrade(br.getGrade());
+	isSigned = true;
 }
 
 const char*	Form::GradeTooHighException::what() const throw()

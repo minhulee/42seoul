@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:51:52 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 18:50:40 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/16 16:13:24 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ class	Intern
 		AForm	*makeForm(std::string type, const std::string target);
 
 	/* Members */
-	private:
-		std::string	list[3];
-		AForm		*(Intern::*creators[3])(const std::string target);
 
 	/* exceptions*/
 	private:

@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:01:08 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 19:18:47 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/16 16:21:20 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@
 Intern::Intern()
 {
 	std::cout << "Intern :: Constructor() called" << std::endl;
-	list[0] = "ShrubberyCreationForm";
-	list[1] = "RobotomyRequestForm";
-	list[2] = "PresidentialPardonForm";
-	creators[0] = &Intern::makeShrubberyCreationForm;
-    creators[1] = &Intern::makeRobotomyRequestForm;
-    creators[2] = &Intern::makePresidentialPardonForm;
-
 }
 
 Intern::~Intern()
@@ -54,6 +47,19 @@ AForm	*Intern::makePresidentialPardonForm(const std::string target)
 AForm	*Intern::makeForm(std::string type, const std::string target)
 {
 	std::cout << "Intern :: Method :: makeForm() called" << std::endl;
+
+	std::string	list[3] = {
+		"shurubbery creation",
+		"robotomy request",
+		"Presidential pardon"
+	};
+	
+	AForm	*(Intern::*creators[3])(const std::string) = {
+		&Intern::makeShrubberyCreationForm,
+		&Intern::makeRobotomyRequestForm,
+		&Intern::makePresidentialPardonForm
+	};
+	
 	for (int i = 0; i < 3; i++)
 	{
 		if (type == list[i])
