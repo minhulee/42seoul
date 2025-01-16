@@ -6,15 +6,16 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:09:43 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/16 16:51:22 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/16 17:01:23 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Bureaucrat.hpp"
 #include "./AForm.hpp"
 #include "./Intern.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "./PresidentialPardonForm.hpp"
+#include "./RobotomyRequestForm.hpp"
+#include "./ShrubberyCreationForm.hpp"
 
 int main(void)
 {
