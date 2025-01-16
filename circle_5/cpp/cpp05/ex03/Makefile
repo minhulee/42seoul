@@ -6,11 +6,11 @@
 #    By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 08:20:59 by minhulee          #+#    #+#              #
-#    Updated: 2025/01/16 16:45:31 by minhulee         ###   ########seoul.kr   #
+#    Updated: 2025/01/16 17:13:51 by minhulee         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 				= 		AFORM
+NAME 				= 		INTERN
 CXX 				= 		c++
 CXXFLAGS 			= 		-Wall -Werror -Wextra -std=c++98
 
