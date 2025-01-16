@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:48:57 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 17:44:18 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/16 16:03:38 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 #include "./AForm.hpp"
 
 Bureaucrat::Bureaucrat(const std::string &name, const int grade)
-: name(name)
+: name(name), grade(validGrade(grade))
 {
 	std::cout << "Bureaucrat :: Constructor called" << std::endl;
-	setGrade(grade);
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
-: name(other.name), grade(other.grade)
+: name(other.name), grade(validGrade(other.grade))
 {
 	std::cout << "Bureaucrat :: Copy Constructor called" << std::endl;
 }
@@ -39,20 +38,20 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other)
 	return (*this);
 }
 
-void	Bureaucrat::validGrade(int grade)
+int	Bureaucrat::validGrade(int grade)
 {
 	std::cout << "Bureaucrat :: Method :: validGrade() called" << std::endl;
 	if (grade < 1)
 		throw GradeTooHighException();
 	if (grade > 150)
 		throw GradeTooLowException();
+	return (grade);
 }
 
 void	Bureaucrat::setGrade(int grade)
 {
 	std::cout << "Bureaucrat :: Method :: setGrade() called" << std::endl;
-	validGrade(grade);
-	this->grade = grade;
+	this->grade = validGrade(grade);
 }
 
 std::string	Bureaucrat::getName() const
@@ -85,13 +84,12 @@ void	Bureaucrat::signForm(AForm &f)
 	try
 	{
 		f.beSigned(*this);
+		std::cout << getName() << " signd " << f.getName() << "." << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << getName() << " couldn't sign " << f.getName() << " because " << e.what() << std::endl;
-		return ;
 	}
-	std::cout << getName() << " signd " << f.getName() << "." << std::endl;
 }
 
 void	Bureaucrat::excuteForm(AForm &f)
@@ -100,13 +98,12 @@ void	Bureaucrat::excuteForm(AForm &f)
 	try
 	{
 		f.excute(*this);
+		std::cout << getName() << " excuted " << f.getName() << "." << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << getName() << " couldn't excute " << f.getName() << " because " << e.what() << std::endl;
-		return ;
 	}
-	std::cout << getName() << " excute " << f.getName() << "." << std::endl;
 }
 
 std::ostream&	operator<<(std::ostream& os, Bureaucrat& rhs)

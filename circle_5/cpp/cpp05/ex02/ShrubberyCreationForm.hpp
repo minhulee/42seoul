@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:58:54 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 17:55:32 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/16 16:34:15 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
  #define SHRUBBERYCREATIONFORM_HPP
 
 # include "AForm.hpp"
+# include <fstream>
 
 class	ShrubberyCreationForm : public AForm
 {

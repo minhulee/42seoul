@@ -6,14 +6,13 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:04:21 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/16 16:05:56 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/16 16:44:23 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./AForm.hpp"
 #include "./RobotomyRequestForm.hpp"
 #include "./Bureaucrat.hpp"
-#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target)
 : AForm("RobotomyRequestForm", 72, 45), target(target)
@@ -43,7 +42,6 @@ void	RobotomyRequestForm::excute(const Bureaucrat &br) const
 	validFormSigned();
 	validExcuteGrade(br.getGrade());
 	std::cout << "DRRRRRRRRR... DRRRRRRRR !!!!!!!!!" << std::endl;
-	std::srand(static_cast<unsigned int>(std::time(0)));
 	if (std::rand() % 2)
 		std::cout << getTarget() << " has been robotomized successfully !" << std::endl;
 	else

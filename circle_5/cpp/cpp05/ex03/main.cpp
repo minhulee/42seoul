@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:09:43 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/14 21:51:57 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/16 16:51:22 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,40 @@
 
 int main(void)
 {
-	std::srand(static_cast<unsigned int>(std::time(0)));
+	srand(time(0));
 	
 	Bureaucrat	b("b", 1);
 	Intern		intern;
 	AForm		*form;
 	std::string	formList[3] = {
-		"ShrubberyCreationForm",
-		"RobotomyRequestForm",
-		"PresidentialPardonForm"
+		"shurubbery creation",
+		"robotomy request",
+		"Presidential pardon"
 	};
 
 	std::cout << std::endl;
 	
+	// invalid form format
 	intern.makeForm("?", "?");
-
-	std::cout << std::endl;
 	
-	form = intern.makeForm(formList[0], "WHO!");
+	for (int i = 0; i < 3; i++)
+	{
+		std::cout << std::endl;
 
-	std::cout << std::endl;
-	
-	b.signForm(*dynamic_cast<ShrubberyCreationForm *>(form));
+		form = intern.makeForm(formList[i], "WHO!");
 
-	std::cout << std::endl;
-	
-	b.excuteForm(*dynamic_cast<ShrubberyCreationForm *>(form));
+		std::cout << std::endl;
+		
+		b.signForm(*form);
 
-	std::cout << std::endl;
+		std::cout << std::endl;
+		
+		b.excuteForm(*form);
 
-	delete(form);
+		std::cout << std::endl;
+
+		delete(form);
+	}
 	
 	return (0);
 }

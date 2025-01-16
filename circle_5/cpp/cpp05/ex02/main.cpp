@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:09:43 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/16 16:05:37 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/16 16:43:53 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 int main(void)
 {	
+	srand(time(0));
 	Bureaucrat	b("b", 1);
 	Bureaucrat	b2("b2", 150);
 	

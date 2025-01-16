@@ -6,16 +6,15 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:36:46 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/10 18:00:45 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/10 17:11:26 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AFORM_HPP
  #define AFORM_HPP
 
-# include <string>
-# include <exception>
-# include <iostream>
+#include <string>
+#include <iostream>
 
 class Bureaucrat;
 
