@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 19:24:13 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/21 18:40:56 by minhulee         ###   ########seoul.kr  */
+/*   Created: 2025/01/21 10:56:33 by minhulee          #+#    #+#             */
+/*   Updated: 2025/01/21 11:07:12 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
- #define SCALARCONVERTER_HPP
+#include "./Serializer.hpp"
 
-#include <string>
-
-class	ScalarConverter
+uintptr_t	Serializer::serialize(Data *ptr)
 {
-	/* OCF */
-	private:
-		ScalarConverter();
-		~ScalarConverter();
-		ScalarConverter(const ScalarConverter &other);
-		ScalarConverter	&operator=(const ScalarConverter &other);
-	
-	/* Method */
-	public:
-		static void		convert(std::string	input);
-};
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
 
-#endif
+Data	*Serializer::deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data *>(raw));
+}

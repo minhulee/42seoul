@@ -5,25 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 16:12:08 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/21 20:07:26 by minhulee         ###   ########seoul.kr  */
+/*   Created: 2025/01/21 10:58:13 by minhulee          #+#    #+#             */
+/*   Updated: 2025/01/21 18:15:51 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ScalarConverter.hpp"
+#include "./Serializer.hpp"
 #include <iostream>
 
-// static_cast : c++ 언어 상에서 가능한 형변환이나, 자동변환을 지원하지 않는 경우
-// 일반적으로, 해당 형변환을 통해 데이터에 손실(호환 불가)이 일어날 수 있는 경우를 의미한다.
-// int -> char, float -> int, int -> char 등등...
-int	main(int ac, char **av)
+// reinterpret_cast : 메모리 재해석을 의미한다.
+// 코드의 가독성을 높이고, C 타입의 캐스팅은 C++에서 지원하는 경고를 받지 못한다.
+int	main()
 {
-	if (ac != 2)
-	{
-		std::cout << "input is invalid." << std::endl;
-		return (0);
-	}
-	ScalarConverter::convert(av[1]);
-	
+	Data		d;
+	uintptr_t	raw = 0;
+
+	d.i = 42;
+	std::cout << "origin : " <<  &d << std::endl;
+	raw = Serializer::serialize(&d);
+	std::cout << "serialize : " << raw << std::endl;
+	std::cout << "desirialize : " << Serializer::deserialize(raw) << std::endl;
+
 	return (0);
 }

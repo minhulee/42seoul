@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 19:24:13 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/21 18:40:56 by minhulee         ###   ########seoul.kr  */
+/*   Created: 2025/01/21 12:19:51 by minhulee          #+#    #+#             */
+/*   Updated: 2025/01/21 18:03:48 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
- #define SCALARCONVERTER_HPP
+#ifndef	C_HPP
+ #define	C_HPP
 
-#include <string>
+#include "./Base.hpp"
 
-class	ScalarConverter
+class	C :	public Base
 {
-	/* OCF */
-	private:
-		ScalarConverter();
-		~ScalarConverter();
-		ScalarConverter(const ScalarConverter &other);
-		ScalarConverter	&operator=(const ScalarConverter &other);
-	
-	/* Method */
 	public:
-		static void		convert(std::string	input);
+		~C();
 };
 
 #endif
