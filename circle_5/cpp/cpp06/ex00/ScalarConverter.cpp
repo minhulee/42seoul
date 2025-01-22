@@ -6,29 +6,23 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 19:27:26 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/21 20:27:41 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/22 11:29:11 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cctype>
-#include <cfloat>
-#include <climits>
-#include <exception>
+#include "./ScalarConverter.hpp"
 #include <iostream>
 #include <sstream>
 #include <cmath>
 #include <limits>
 #include <iomanip>
-#include "./ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter() {};
 ScalarConverter::~ScalarConverter() {};
 
-#define	OutOfRange	"OUT OF RANGE !";
-
 int	getN(std::string &input)
 {
-	int integerPart = static_cast<int>(stod(input));
+	int integerPart = static_cast<int>(atof(input.c_str()));
 	int digitCount = static_cast<int>(log10(fabs(integerPart))) + 1;
 	return digitCount;
 }
@@ -70,7 +64,6 @@ bool	convertJustChar(std::string &input)
 	return (true);
 }
 
-// inf, nan
 void	ScalarConverter::convert(std::string input)
 {
 	if (convertJustChar(input))
@@ -82,7 +75,7 @@ void	ScalarConverter::convert(std::string input)
 		return ;
 	}
 
-	double	res = stod(input);
+	double	res = atof(input.c_str());
 
 	// char
 	std::cout << "char : ";
@@ -95,7 +88,9 @@ void	ScalarConverter::convert(std::string input)
 
 	// int
 	std::cout << "int : ";
-	if (res < INT_MIN || INT_MAX < res)
+	if (input == "nan")
+		std::cout << "impossible : nan !" << std::endl;
+	else if (res < INT_MIN || INT_MAX < res)
 		std::cout << "impossible : out of range !" << std::endl;
 	else
 		std::cout << static_cast<int>(res) << std::endl;
@@ -113,9 +108,6 @@ void	ScalarConverter::convert(std::string input)
 		std::cout  << static_cast<float>(res) << std::endl;
 
 	// double
-	// std::cout << 소수를 출력할때, 정수부가 6개가 넘어가면 지수표현식
-	// 아니면, 소수로 출력하고 -> float -> .아래 6자리 | double -> . 아래 15~16자리
-	// setprecision
 	std::cout << "double : ";
 	if (getN(input) < 7)
 	{
