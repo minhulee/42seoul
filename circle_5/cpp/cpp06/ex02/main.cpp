@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:49:26 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/22 11:39:31 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/22 12:02:26 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	identify(Base &p)
 	std::cout << "I don't know *p's TYPE .." << std::endl;
 }
 
+// 런타임에서 타입을 확인함으로써, 상속 관계에서 다운 캐스팅에 사용하는 연산자
+// -> vtable을 통해 상속 관계를 확인함으로, 가상 함수가 반드시 필요하다~
 int	main(void)
 {
 	std::srand(time(0));
