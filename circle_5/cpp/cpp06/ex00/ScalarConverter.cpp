@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 19:27:26 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/22 11:29:11 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/22 11:31:36 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <sstream>
 #include <cmath>
+#include <climits>
 #include <limits>
 #include <iomanip>
 

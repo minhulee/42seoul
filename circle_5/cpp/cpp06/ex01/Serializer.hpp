@@ -6,14 +6,14 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:49:51 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/21 18:14:03 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/22 11:36:42 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERIALIZER_HPP
  #define SERIALIZER_HPP
 
-#include <cstdint>
+#include <stdint.h>
 #include "./Data.h"
 
 class	Serializer

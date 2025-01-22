@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:49:26 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/21 18:11:33 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/22 11:39:31 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "./C.hpp"
 #include <ctime>
 #include <iostream>
-//#include <cstddef>
+#include <cstdlib>
 
 Base	*generate()
 {
