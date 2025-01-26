@@ -5,34 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/26 22:27:45 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/26 22:57:16 by minhulee         ###   ########seoul.kr  */
+/*   Created: 2025/01/26 23:24:53 by minhulee          #+#    #+#             */
+/*   Updated: 2025/01/27 03:36:43 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+#ifndef ARRAY_TPP
+ #define ARRAY_TPP
+
 #include <iostream>
+#include "Array.hpp"
 
 template<typename T>
 Array<T>::Array()
-: arr(NULL), len(0)
+: len(0), arr(new T[len])
 {
-	std::cout << "Array :: Constructor() called" << std::endl;
+	std::cout << "Array :: Default Constructor() called" << std::endl;
 }
 
 template<typename T>
-Array<T>::Array(unsigned int n)
-: arr(new T[n]()), len(n)
+Array<T>::Array(const unsigned int n)
+: len(n), arr(new T[len])
 {
 	std::cout << "Array :: Constructor(n) called" << std::endl;
 }
 
 template<typename T>
 Array<T>::Array(const Array &other)
-: arr(new T[other.n]()), len(other.n)
+: len(other.len), arr(new T[len])
 {
 	std::cout << "Array :: Copy Constructor() called" << std::endl;
-	for (int i = 0; i < n; i++)
+	for (unsigned int i = 0; i < len; i++)
 		arr[i] = other.arr[i];
 }
 
@@ -40,4 +43,49 @@ template<typename T>
 Array<T>::~Array()
 {
 	std::cout << "Array :: Destructor() called" << std::endl;
+	delete [] arr;
 }
+
+template<typename T>
+Array<T>	&Array<T>::operator=(const Array &other)
+{
+	std::cout << "Array :: operator= called" << std::endl;
+	if (this != &other)
+	{
+		if (arr)
+		{
+			std::cout << "delete arr !" << std::endl;
+			delete [] arr;
+		}
+		len = other.len;
+		arr = new T[len]();
+
+		for (unsigned int i = 0; i < len; i++)
+			arr[i] = other.arr[i];
+	}
+	return (*this);
+}
+
+template<typename T>
+T	&Array<T>::operator[](const unsigned int n)
+{
+	// std::cout << "Array :: operator[] called" << std::endl;
+	if (len <= n)
+		throw OutOfRangeException();
+	return (arr[n]);
+}
+
+template<typename T>
+unsigned int	Array<T>::size() const
+{
+	// std::cout << "Array :: Method :: size() called" << std::endl;
+	return (len);
+}
+
+template<typename T>
+const char	*Array<T>::OutOfRangeException::what() const throw()
+{
+	return ("Array :: Out of Range Exception !");
+}
+
+#endif
