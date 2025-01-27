@@ -6,13 +6,14 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:24:53 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/27 03:36:43 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/27 10:31:40 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_TPP
  #define ARRAY_TPP
 
+#include <exception>
 #include <iostream>
 #include "Array.hpp"
 
@@ -71,7 +72,7 @@ T	&Array<T>::operator[](const unsigned int n)
 {
 	// std::cout << "Array :: operator[] called" << std::endl;
 	if (len <= n)
-		throw OutOfRangeException();
+		throw std::exception();
 	return (arr[n]);
 }
 
@@ -82,10 +83,10 @@ unsigned int	Array<T>::size() const
 	return (len);
 }
 
-template<typename T>
-const char	*Array<T>::OutOfRangeException::what() const throw()
-{
-	return ("Array :: Out of Range Exception !");
-}
+//template<typename T>
+//const char	*Array<T>::OutOfRangeException::what() const throw()
+//{
+//	return ("Array :: Out of Range Exception !");
+//}
 
 #endif
