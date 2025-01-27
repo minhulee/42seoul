@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:42:31 by minhulee          #+#    #+#             */
-/*   Updated: 2025/01/26 22:21:15 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/01/27 10:43:22 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 template<typename Tary, typename Tfunc>
 void	iter(Tary arr, size_t len, Tfunc f)
 {
-	if (!arr)
-		return ;
+	// this is not Array !, Just Pointer !
+	//if (!arr)
+	//	return ;
 	for (size_t i = 0; i < len; i++)
 		f(arr[i]);
 }
