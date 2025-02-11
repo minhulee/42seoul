@@ -6,7 +6,7 @@
 #    By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 08:20:59 by minhulee          #+#    #+#              #
-#    Updated: 2025/02/09 13:23:48 by minhulee         ###   ########seoul.kr   #
+#    Updated: 2025/02/11 16:47:28 by minhulee         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CXXFLAGS 			= 		-Wall -Werror -Wextra -std=c++98
 INCLUDES 			=
 
 SRCS				=		./main.cpp				\
-							./BitcoinExchange.cpp
+							./RPN.cpp
 
 OBJ					=		$(SRCS:.cpp=.o)
 
