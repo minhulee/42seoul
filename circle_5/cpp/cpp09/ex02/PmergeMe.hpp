@@ -6,14 +6,13 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 09:29:15 by minhulee          #+#    #+#             */
-/*   Updated: 2025/02/12 22:17:48 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/02/13 22:06:38 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
  #define PMERGEME_HPP
 
-#include <cstddef>
 #include <exception>
 #include <deque>
 #include <list>
@@ -26,15 +25,14 @@ class	PmergeMe
 
 	/* encapsulates the main funcs */
 	private:
-		static std::deque<int>	getJacobsthalDeque(size_t count);
-		static size_t			findInsertPoint(int value, std::deque<int*>& firstHalf);
 		static std::deque<int>	inputToDq(char **av);
 		static std::list<int>	inputToLs(char **av);
 
-		static void				makePair(std::deque<int *> &, const std::deque<int> &);
-		static void				makePair(std::list<int *> &);
+		static std::deque<int> 	getJacobsthalDq(int size);
+		static std::list<int> 	getJacobsthalLs(int size);
 
-		static void				mergeInsertionSort(std::deque<int> &, std::deque<int>::iterator, std::deque<int>::iterator);
+		static void				mergeInsertionSort(std::deque<int>::iterator, std::deque<int>::iterator);
+		static void				mergeInsertionSort(std::list<int>::iterator, std::list<int>::iterator);
 
 	/* exceptions */
 	private:
