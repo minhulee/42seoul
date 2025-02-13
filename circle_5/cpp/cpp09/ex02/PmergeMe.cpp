@@ -6,38 +6,45 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 09:44:27 by minhulee          #+#    #+#             */
-/*   Updated: 2025/02/12 17:38:50 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/02/13 16:54:26 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./PmergeMe.hpp"
-#include <cstddef>
 #include <cstdlib>
 #include <iostream>
 #include <cmath>
 
 #define INVALID_INPUT -1
 
-int	getJacobsthalNum(int n)
+size_t PmergeMe::findInsertPoint(int value, std::deque<int*>& firstHalf) {
+    size_t index = 0;
+    for (std::deque<int*>::iterator it = firstHalf.begin(); it != firstHalf.end(); ++it, ++index) {
+        if (value < (*it)[0])
+            return index;
+    }
+    return firstHalf.size();
+}
+
+void	testPrint(std::deque<int>::iterator it, std::deque<int>::iterator end)
 {
-	int	prev = 0;
-	int jacobsthalNum = 0;
-	for (int i = 0; jacobsthalNum > n; i++)
+	// std::cout << "test print" << std::endl;
+	std::cout << "elements : ";
+	while (it != end)
 	{
-		prev = jacobsthalNum;
-		jacobsthalNum = (pow(2, i + 1) + pow(-1, i)) / 3;
+		std::cout <<  *it << " ";
+		it++;
 	}
-	return (prev);
+	std::cout << std::endl;
 }
 
 void	testPrint(std::deque<int *>::iterator it, std::deque<int *>::iterator end)
 {
-	int	n = 1;
-
 	// std::cout << "test print" << std::endl;
+	int	n = 1;
 	while (it != end)
 	{
-		std::cout << "Pairs " << n << " : [" << (*it)[0] << "] [" << (*it)[1] << "]" << std::endl;
+		std::cout << "pairs " << n << " : " << (*it)[0] << " | " << (*it)[1] << std::endl;
 		it++;
 		n++;
 	}
@@ -78,34 +85,7 @@ std::deque<int>	PmergeMe::inputToDq(char **av)
 	return (dq);
 }
 
-// void	PmergeMe::makePair(std::deque<int *> &pair, const std::deque<int> &dq)
-// {
-// 	std::deque<int>::const_iterator	it = dq.begin();
-	
-// 	while (it != dq.end())
-// 	{
-// 		std::deque<int>::const_iterator	next = it;
-// 		next++;
-
-// 		int	*target = new int[2];
-// 		target[0] = *it < *next ? *next : *it;
-// 		target[1] = *it < *next ? *it : *next;
-// 		pair.push_back(target);
-// 		it++;
-// 		if (it == dq.end())
-// 			break ;
-// 		it++;
-// 	}
-// 	if (it != dq.end())
-// 	{
-// 		int	*target = new int[2];
-// 		target[0] = *it;
-// 		target[1] = 0;
-// 		pair.push_back(target);
-// 	}
-// }
-
-int	dqlen(std::deque<int *>::const_iterator it, std::deque<int *>::const_iterator end)
+int	dqlen(std::deque<int>::const_iterator it, std::deque<int>::const_iterator end)
 {
 	size_t	len = 0;
 
@@ -117,71 +97,87 @@ int	dqlen(std::deque<int *>::const_iterator it, std::deque<int *>::const_iterato
 	return (len);
 }
 
-void	dqswap(std::deque<int *>::iterator left, std::deque<int *>::iterator right)
+void	dqswap(std::deque<int>::iterator left, std::deque<int>::iterator right)
 {
-	int	*tmp = *left;
+	int	tmp = *left;
 
 	*left = *right;
 	*right = tmp;
 }
 
-void	PmergeMe::mergeInsertionSort(std::deque<int *>::iterator it, std::deque<int *>::iterator end)
+// 14 89 1 3 99
+// 14 89 | 1 3 99 [14 1], [89 3], 99
+// 89 | 14 [89 14]
+// 89
+// 14 89
+// 1 3 14 89 .. 99
+
+int	dqlen(std::deque<int>::iterator it, std::deque<int>::iterator end)
 {
-	size_t	len = dqlen(it, end);
-	std::deque<int *>::iterator middle = it;
-	std::advance(middle, len / 2);
+	int	len = 0;
 
-	if (len < 2)
-		return ;
-
-	std::cout << "swap---------" << std::endl;
-
-	for (size_t i = 0; i < len / 2; i++)
+	while (it != end)
 	{
-		if (*(it + i)[0] < *(middle + i)[0])
-		{
-			dqswap(it + i, middle + i);
-			std::cout << "swap : " << *(it + i)[0] << " | " << *(middle + i)[0] << std::endl;
-		}
+		len++;
+		it++;
 	}
-	
-	testPrint(it, end);
-	mergeInsertionSort(it, middle);
+	return (len);
+}
 
-	std::cout << "insertion------" << std::endl;
-	testPrint(it, end);
-
-	for (int i = getJacobsthalNum(len); i > 0; i--)
+std::deque<int>::iterator	searchIndex(std::deque<int>::iterator it, std::deque<int>::iterator end, int target)
+{
+	int	mid = dqlen(it, end) / 2;
+	while (*it < target)
 	{
-		if (*(it + i)[1])
-		{
-			
-		}
+		if (*(it + mid) > target)
+			std::advance(end, -(mid / 2));
+		else
+			std::advance(it, mid / 2);
 	}
 }
 
-void	dqClear(std::deque<int *>dq)
+void	PmergeMe::mergeInsertionSort(std::deque<int> &origin, std::deque<int>::iterator it, std::deque<int>::iterator end)
 {
-	std::deque<int *>::iterator itr = dq.begin();
+	if (dqlen(it, end) < 2)
+		return ;
+	
+	std::cout << "len : " << dqlen(it, end) << std::endl;
+	
+	std::deque<int *>	mainChain;
+	std::deque<int>		halfDq;
+	int	mid = dqlen(it, end) / 2;
 
-	while (itr != dq.end())
-		delete[] *(itr++);
+	for (int i = 0; i < mid; i++)
+	{
+		if (*(it + i) < *(it + mid + i))
+			dqswap(it + i, it + mid + i);
+		int	*pair = new int[2];
+		pair[0] = *(it + i);
+		pair[1] = *(it + mid + i);
+		mainChain.push_back(pair);
+	}
+
+	testPrint(it, end);
+	testPrint(mainChain.begin(), mainChain.end());
+	mergeInsertionSort(origin, it, it + mid);
+
+	testPrint(it, end);
+	testPrint(mainChain.begin(), mainChain.end());
+
 }
 
 void	PmergeMe::run(char **av)
 {
-	std::deque<int *>	deque;
+	std::deque<int>		dq = inputToDq(av + 1);
 	std::list<int *>	list;
 
 	try
 	{
-		makePair(deque, inputToDq(av + 1));
 		std::cout << "init ! -------------" << std::endl;
-		testPrint(deque.begin(), deque.end());
-		std::cout << std::endl << std::endl;
-		mergeInsertionSort(deque.begin(), deque.end());
+		testPrint(dq.begin(), dq.end());
+		mergeInsertionSort(dq, dq.begin(), dq.end());
+		testPrint(dq.begin(), dq.end());
 		// binery search
-		dqClear(deque);
 	}
 	catch (std::exception &e)
 	{
