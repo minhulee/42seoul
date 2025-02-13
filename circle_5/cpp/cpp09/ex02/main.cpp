@@ -6,17 +6,12 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:01:04 by minhulee          #+#    #+#             */
-/*   Updated: 2025/02/13 21:59:28 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/02/14 01:11:22 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <iostream>
-
-void	check()
-{
-	system("leaks PmergeMe");
-}
 
 int	main(int ac, char **av)
 {
