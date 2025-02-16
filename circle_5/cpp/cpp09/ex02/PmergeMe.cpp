@@ -6,7 +6,7 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 09:44:27 by minhulee          #+#    #+#             */
-/*   Updated: 2025/02/14 04:29:43 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/02/16 21:11:22 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -413,8 +413,8 @@ void	PmergeMe::run(char **av)
 		itprint<std::deque<int> >(dq.begin(), dq.end());
 		std::cout << std::fixed << "Time to process a range of " << dq.size() << " elements with std::[deque] : " << double(e - s) / CLOCKS_PER_SEC << "us" << std::endl;
 
-		// std::cout << "Before: ";
-		// itprint<std::list<int> >(ls.begin(), ls.end());
+		 std::cout << "Before: ";
+		 itprint<std::list<int> >(ls.begin(), ls.end());
 		s = clock();
 		mergeInsertionSort(ls.begin(), ls.end());
 		e = clock();
