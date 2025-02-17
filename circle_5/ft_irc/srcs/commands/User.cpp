@@ -6,14 +6,13 @@
 /*   By: minhulee <minhulee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 23:52:43 by minhulee          #+#    #+#             */
-/*   Updated: 2025/02/17 03:12:17 by minhulee         ###   ########seoul.kr  */
+/*   Updated: 2025/02/17 07:01:53 by minhulee         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Command: USER
 // Parameters: <username> 0 * <realname>
 // USER <username> <hostname> <servername> <realname>
-
 
 // 서버에서 해당 유저를 인식하기 위한 유저 정보를 설정한다. -> 따라서 최초 연결시만 사용된다.
 // 실제 connect 시 NICK -> USER 순으로 전송, 동시에 보내지는 경우도 있으나 알바노
