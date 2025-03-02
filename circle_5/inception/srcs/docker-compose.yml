@@ -1,0 +1,61 @@
+version: '3.0'
+
+services:
+  mariadb:
+    container_name: my-mariadb
+    build:
+      context: ./requirements/mariadb
+    image: my-mariadb
+    env_file:
+      - ./.env
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - intra
+
+  wordpress:
+    container_name: my-wordpress
+    build:
+      context: ./requirements/wordpress
+    image: my-wordpress
+    env_file:
+      - ./.env
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - intra
+
+  nginx:
+    container_name: my-nginx
+    build:
+      context: ./requirements/nginx
+    image: my-nginx
+    env_file:
+      - ./.env
+    ports:
+      - 443:443
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - intra
+
+volumes:
+  db:
+    name: db
+    driver: local
+    driver_opts:
+      device: /home/${HOSTNAME}/data/db
+      o: bind
+      type: none
+
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      device: /home/${HOSTNAME}/data/wordpress
+      o: bind
+      type: none
+
+networks:
+  intra:
+    driver: bridge
